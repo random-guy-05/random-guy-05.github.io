@@ -3,451 +3,531 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Arnav Mana - student researcher focused on cardiac critical care, computational biology, and health innovation.">
-    <title>Arnav Mana | Personal Website</title>
+    <title>Arnav Mana | Computational Research</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0a1118;
-            --bg-soft: #0f1924;
-            --surface: #121f2d;
-            --surface-2: #16283a;
-            --text: #e5edf5;
-            --text-muted: #9cb0c4;
-            --line: #263d54;
-            --accent: #40c3ff;
-            --accent-2: #63f4cf;
-            --shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            --radius: 18px;
+            --bg: #030712;
+            --surface: rgba(17, 24, 39, 0.7);
+            --surface-hover: rgba(31, 41, 55, 0.8);
+            --border: rgba(0, 243, 255, 0.15);
+            --border-hover: rgba(0, 243, 255, 0.5);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --neon-blue: #00f3ff;
+            --neon-glow: 0 0 20px rgba(0, 243, 255, 0.3);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            cursor: none; /* Hide default cursor for custom follower */
         }
 
         body {
-            font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
-            color: var(--text);
-            background:
-                radial-gradient(circle at 10% 15%, rgba(64, 195, 255, 0.22), transparent 30%),
-                radial-gradient(circle at 85% 0%, rgba(99, 244, 207, 0.16), transparent 28%),
-                linear-gradient(170deg, var(--bg) 0%, #050a10 100%);
-            min-height: 100vh;
-            line-height: 1.65;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 243, 255, 0.08), transparent 40%),
+                radial-gradient(circle at 85% 10%, rgba(0, 102, 255, 0.08), transparent 40%);
+            background-attachment: fixed;
         }
 
-        .backdrop {
+        /* Custom Mouse Follower */
+        .cursor-follower {
             position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-            background-size: 36px 36px;
-            mask-image: radial-gradient(circle at center, black 35%, transparent 95%);
-            opacity: 0.18;
-            z-index: -1;
-        }
-
-        .container {
-            width: min(1100px, 92vw);
-            margin: 28px auto 40px;
-            display: grid;
-            gap: 18px;
-        }
-
-        .panel {
-            background: linear-gradient(140deg, rgba(18, 31, 45, 0.88), rgba(10, 17, 24, 0.92));
-            border: 1px solid rgba(156, 176, 196, 0.17);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(6px);
-            opacity: 0;
-            transform: translateY(16px);
-            animation: rise 0.8s ease forwards;
-        }
-
-        .panel:nth-child(2) { animation-delay: 0.08s; }
-        .panel:nth-child(3) { animation-delay: 0.16s; }
-        .panel:nth-child(4) { animation-delay: 0.24s; }
-        .panel:nth-child(5) { animation-delay: 0.32s; }
-
-        .hero {
-            padding: 32px;
-            display: grid;
-            gap: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            width: 280px;
-            height: 280px;
-            top: -110px;
-            right: -70px;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--neon-blue);
             border-radius: 50%;
-            background: radial-gradient(circle at center, rgba(64, 195, 255, 0.38), transparent 72%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            z-index: 9999;
+            box-shadow: var(--neon-glow);
         }
 
-        .headline {
+        .cursor-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background-color: var(--neon-blue);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+        }
+
+        .layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 60px;
             position: relative;
             z-index: 1;
         }
 
-        .name {
-            font-family: "Sora", "Segoe UI", sans-serif;
-            letter-spacing: 0.02em;
-            font-size: clamp(2rem, 3.8vw, 3rem);
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 80px;
+            height: max-content;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .glitch-text {
+            position: relative;
+            display: inline-block;
         }
 
         .tagline {
-            color: var(--text-muted);
-            max-width: 64ch;
+            color: var(--neon-blue);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
         }
 
-        .contact-row {
+        .contact-links {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
         }
 
-        .pill {
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            padding: 8px 14px;
-            color: var(--text);
-            text-decoration: none;
-            font-size: 0.95rem;
-            background: rgba(15, 25, 36, 0.65);
-            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-        }
-
-        .pill:hover {
-            transform: translateY(-1px);
-            border-color: var(--accent);
-            background: rgba(21, 44, 64, 0.75);
-        }
-
-        .quick-stats {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .stat {
-            background: linear-gradient(140deg, rgba(22, 40, 58, 0.72), rgba(11, 21, 32, 0.8));
-            border: 1px solid rgba(156, 176, 196, 0.16);
-            border-radius: 14px;
-            padding: 14px;
-        }
-
-        .stat-value {
-            font-family: "Sora", "Segoe UI", sans-serif;
-            color: var(--accent-2);
-            font-size: 1.35rem;
-            line-height: 1;
-            margin-bottom: 6px;
-        }
-
-        .stat-label {
+        .contact-links a {
             color: var(--text-muted);
+            font-family: 'Space Mono', monospace;
+            text-decoration: none;
             font-size: 0.85rem;
+            transition: all 0.3s ease;
+            position: relative;
+            width: fit-content;
         }
 
-        .content {
-            padding: 30px;
+        .contact-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--neon-blue);
+            transition: width 0.3s ease;
+            box-shadow: var(--neon-glow);
+        }
+
+        .contact-links a:hover {
+            color: var(--neon-blue);
+        }
+
+        .contact-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Glassmorphism Cards */
+        .card {
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-hover);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 243, 255, 0.05);
+            transform: translateY(-5px) scale(1.01);
         }
 
         h2 {
-            font-family: "Sora", "Segoe UI", sans-serif;
-            font-size: 1.45rem;
-            margin-bottom: 18px;
-            letter-spacing: 0.02em;
-        }
-
-        .subtle {
-            color: var(--text-muted);
-        }
-
-        .education-card {
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            background: rgba(11, 20, 30, 0.58);
-            padding: 18px;
-        }
-
-        .entry-title {
-            font-weight: 600;
-            font-size: 1.05rem;
-        }
-
-        .entry-meta {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            margin-bottom: 8px;
-        }
-
-        .detail-list {
-            list-style: none;
-            display: grid;
-            gap: 8px;
-        }
-
-        .detail-list li {
-            color: #d7e5f2;
-        }
-
-        .detail-list strong {
-            color: #ffffff;
-        }
-
-        .timeline {
-            list-style: none;
-            display: grid;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
             gap: 16px;
-            position: relative;
         }
 
-        .timeline::before {
+        h2::after {
             content: "";
-            position: absolute;
-            left: 10px;
-            top: 6px;
-            bottom: 6px;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--accent), rgba(64, 195, 255, 0.08));
+            height: 1px;
+            flex-grow: 1;
+            background: linear-gradient(90deg, var(--neon-blue), transparent);
+            opacity: 0.5;
         }
 
-        .timeline li {
-            position: relative;
-            margin-left: 30px;
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            background: rgba(10, 19, 28, 0.62);
-            padding: 14px 16px;
-            transition: border-color 0.25s ease, transform 0.25s ease;
-        }
-
-        .timeline li::before {
-            content: "";
-            position: absolute;
-            left: -27px;
-            top: 18px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            border: 2px solid var(--accent);
-            background: var(--bg-soft);
-        }
-
-        .timeline li:hover {
-            border-color: var(--accent);
-            transform: translateY(-1px);
-        }
-
-        .timeline .date {
-            color: var(--accent-2);
-            font-size: 0.88rem;
-            margin-bottom: 4px;
-        }
-
-        .timeline .project {
-            color: var(--text-muted);
-            margin-top: 6px;
-            font-size: 0.96rem;
-        }
-
-        .leadership-list {
-            list-style-position: inside;
-            display: grid;
-            gap: 6px;
-            color: #d9e6f3;
-            margin-top: 8px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
             gap: 12px;
         }
 
-        .skill-card {
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            background: rgba(12, 23, 34, 0.65);
-            padding: 16px;
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #fff;
         }
 
-        .skill-card h3 {
-            color: var(--accent-2);
-            margin-bottom: 8px;
-            font-size: 1rem;
+        .card-meta {
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--neon-blue);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            border: 1px solid rgba(0, 243, 255, 0.2);
         }
 
-        footer {
-            text-align: center;
+        .card-role {
+            color: var(--neon-blue);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .card-desc {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            padding: 6px 10px 0;
+            font-size: 0.95rem;
         }
 
-        @keyframes rise {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .card-desc strong {
+            color: var(--text-main);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
         }
 
-        @media (max-width: 860px) {
-            .quick-stats {
+        /* Tags and Lists */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .tag {
+            background: transparent;
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .tag {
+            border-color: rgba(0, 243, 255, 0.3);
+            color: var(--text-main);
+        }
+
+        ul.metrics-list {
+            list-style: none;
+            margin-top: 16px;
+            display: grid;
+            gap: 12px;
+        }
+
+        ul.metrics-list li {
+            position: relative;
+            padding-left: 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        ul.metrics-list li::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: var(--neon-blue);
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+        }
+
+        /* Data Grid for Education */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .data-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 3px solid var(--neon-blue);
+        }
+
+        .data-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .data-value {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .layout {
                 grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 40px 20px;
             }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
+            .sidebar {
+                position: relative;
+                top: 0;
             }
-
-            .hero,
-            .content {
-                padding: 22px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                width: min(720px, 94vw);
-                margin-top: 14px;
-            }
-
-            .pill {
-                width: 100%;
-                text-align: center;
-            }
+            * { cursor: auto; } /* Disable custom cursor on mobile */
+            .cursor-follower, .cursor-dot { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="backdrop" aria-hidden="true"></div>
 
-    <main class="container">
-        <section class="panel hero">
-            <div class="headline">
-                <h1 class="name">Arnav Mana</h1>
-                <p class="tagline">Student researcher focused on cardiac critical care, computational methods, and healthcare innovation. Building high-impact work across medicine, data science, and leadership.</p>
+    <div class="cursor-follower"></div>
+    <div class="cursor-dot"></div>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <h1 class="glitch-text">Arnav<br>Mana</h1>
+            <p class="tagline">SYS.ARCHITECT // RESEARCH</p>
+            
+            <div class="contact-links">
+                <a href="mailto:2arnavmana@gmail.com">MSG: 2arnavmana@gmail.com</a>
+                <a href="tel:+14086561171">COM: +1 (408) 656-1171</a>
             </div>
 
-            <div class="contact-row" aria-label="Contact information">
-                <a class="pill" href="mailto:2arnavmana@gmail.com">2arnavmana@gmail.com</a>
-                <a class="pill" href="tel:+14086561171">+1 (408) 656-1171</a>
-            </div>
-
-            <div class="quick-stats" aria-label="Highlights">
-                <div class="stat">
-                    <p class="stat-value">4.67 / 5.0</p>
-                    <p class="stat-label">Weighted GPA</p>
+            <div class="card" style="padding: 24px; opacity: 1; transform: none;">
+                <div class="card-role" style="margin-bottom: 8px;">Tech Stack</div>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">R</span>
+                    <span class="tag">MATLAB</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Swift</span>
+                    <span class="tag">JavaScript</span>
                 </div>
-                <div class="stat">
-                    <p class="stat-value">1570</p>
-                    <p class="stat-label">SAT (770R / 800M)</p>
-                </div>
-                <div class="stat">
-                    <p class="stat-value">$100K+</p>
-                    <p class="stat-label">Hackathon Funding Secured</p>
+
+                <div class="card-role" style="margin-top: 24px; margin-bottom: 8px;">Wet Lab</div>
+                <div class="tags">
+                    <span class="tag">Gel Electrophoresis</span>
+                    <span class="tag">PAGE</span>
+                    <span class="tag">ELISA</span>
+                    <span class="tag">qPCR</span>
                 </div>
             </div>
-        </section>
+        </aside>
 
-        <section class="panel content">
-            <h2>Education</h2>
-            <article class="education-card">
-                <p class="entry-title">Los Gatos High School</p>
-                <p class="entry-meta">Class of 2028</p>
-                <ul class="detail-list">
-                    <li><strong>GPA:</strong> 4.0 / 4.0 UW; 4.67 / 5.0 W</li>
-                    <li><strong>SAT:</strong> 1570 (770R / 800M)</li>
-                    <li><strong>Relevant Coursework:</strong> AP Calculus BC, AP European History, English 10 Honors, Spanish 4 Honors</li>
-                    <li><strong>Self-Studied:</strong> AP Biology, AP Chemistry, AP Statistics, MIT OCW: Introduction to Computer Science and Programming in Python, MIT OCW: Introduction to Computational Thinking and Data Science</li>
-                </ul>
-            </article>
-        </section>
+        <main class="content">
+            
+            <section>
+                <h2>Experience_&_Research</h2>
 
-        <section class="panel content">
-            <h2>Research Experience</h2>
-            <ul class="timeline">
-                <li>
-                    <p class="entry-title">UCSF Cardiac Critical Care - Research Intern</p>
-                    <p class="date">August 2025 - Present</p>
-                    <p class="project">Integrating SHARC Phenotypes and Hemodynamic Modifiers to Redefine the Predictive Architecture of Lactate.</p>
-                </li>
-                <li>
-                    <p class="entry-title">CU Anschutz School of Medicine - Research Intern</p>
-                    <p class="date">May 2024 - Present</p>
-                    <p class="project">Investigating the role of the glycosphingolipid-cytokine signaling axis in the development and progression of hypoplastic left heart syndrome.</p>
-                </li>
-                <li>
-                    <p class="entry-title">PhysioGraph: Latent Spatiotemporal Topologies - Independent Researcher</p>
-                    <p class="date">August 2025 - Present</p>
-                    <p class="project">Optimizing the SCAI staging system using decision tree algorithms on hemodynamic data.</p>
-                </li>
-                <li>
-                    <p class="entry-title">Chronic Intermittent Hypoxia Study - Independent Researcher</p>
-                    <p class="date">March 2024 - November 2025</p>
-                    <p class="project">Analyzed 2,653 IHCA patients using IPTW and linear mixed-effects models to identify metabolic protection in OSA patients.</p>
-                </li>
-            </ul>
-        </section>
+                <div class="card scroll-reveal">
+                    <div class="card-header">
+                        <span class="card-title">UCSF Cardiac Critical Care</span>
+                        <span class="card-meta">Aug 2025 – Present</span>
+                    </div>
+                    <div class="card-role">Research Intern // Remote</div>
+                    <div class="card-desc">
+                        <strong>Integrating SHARC Phenotypes and Hemodynamic Modifiers to Redefine the Predictive Architecture of Lactate</strong>
+                        Leveraging network analysis to decode how hemodynamic modifiers and SHARC phenotypes transform lactate from a late-stage marker into a precision tool for predicting the transition from STEMI to heart failure shock.
+                    </div>
+                </div>
 
-        <section class="panel content">
-            <h2>Leadership and Activities</h2>
-            <article class="education-card">
-                <p class="entry-title">Hack4Health - Cofounder and Co-President</p>
-                <p class="date">August 2025 - Present</p>
-                <ul class="leadership-list">
-                    <li>Led AI4Alzheimers hackathon with 1,470 global participants.</li>
-                    <li>Secured 20+ organizational partnerships and $100K+ in funding.</li>
-                    <li>Recruited 20 research mentors with 100+ publications and 500+ citations.</li>
-                </ul>
-            </article>
-        </section>
+                <div class="card scroll-reveal">
+                    <div class="card-header">
+                        <span class="card-title">CU Anschutz School of Medicine</span>
+                        <span class="card-meta">May 2024 – Present</span>
+                    </div>
+                    <div class="card-role">Research Intern // Remote</div>
+                    <div class="card-desc">
+                        <strong>Investigating the Role of the Glycosphingolipid-Cytokine Signaling Axis in the Development and Progression of Hypoplastic Left Heart Syndrome</strong>
+                        Investigating how the interaction between glycosphingolipid signaling and cytokine pathways drives the development and severity of Hypoplastic Left Heart Syndrome (HLHS).
+                    </div>
+                </div>
 
-        <section class="panel content">
-            <h2>Skills and Interests</h2>
-            <div class="skills-grid">
-                <article class="skill-card">
-                    <h3>Technical</h3>
-                    <p class="subtle">Python, R, MATLAB, JavaScript, HTML, CSS, SQL, Swift</p>
-                </article>
-                <article class="skill-card">
-                    <h3>Languages</h3>
-                    <p class="subtle">English (Fluent), Spanish (Nearly Fluent), Hindi (Somewhat Fluent)</p>
-                </article>
-                <article class="skill-card">
-                    <h3>Laboratory</h3>
-                    <p class="subtle">Gel Electrophoresis, PAGE, ELISA, PCR, qPCR, RT-qPCR</p>
-                </article>
-                <article class="skill-card">
-                    <h3>Interests</h3>
-                    <p class="subtle">Eagle Scout, Cross Country, Track, Fencing</p>
-                </article>
-            </div>
-        </section>
+                <div class="card scroll-reveal">
+                    <div class="card-header">
+                        <span class="card-title">Latent Spatiotemporal Topologies</span>
+                        <span class="card-meta">Aug 2025 – Present</span>
+                    </div>
+                    <div class="card-role">Independent Researcher</div>
+                    <div class="card-desc">
+                        <strong>Prodromal Cardiogenic Shock in STEMI via a Recurrent Gated GATv2 Network (PhysioGraph)</strong>
+                        Optimizing the SCAI staging system for cardiogenic shock by using decision tree algorithms to interpret high-fidelity PhysioGraph hemodynamic data for earlier identification and intervention.
+                    </div>
+                </div>
 
-        <footer>
-            <p>Copyright 2026 Arnav Mana. All rights reserved.</p>
-        </footer>
-    </main>
+                <div class="card scroll-reveal">
+                    <div class="card-header">
+                        <span class="card-title">Post-Cardiac Arrest Outcomes</span>
+                        <span class="card-meta">Aug 2025 – Present</span>
+                    </div>
+                    <div class="card-role">Independent Researcher</div>
+                    <div class="card-desc">
+                        <strong>Chronic Intermittent Hypoxia: A Retrospective Analysis of Obstructive Sleep Apnea and Ischemic Tolerance</strong>
+                        Analyzed 2,653 IHCA patients using IPTW and linear mixed-effects models to identify a “metabolic shield” in OSA patients that significantly reduced mortality without improving neurological recovery.
+                    </div>
+                </div>
+
+                <div class="card scroll-reveal">
+                    <div class="card-header">
+                        <span class="card-title">Vascular Inflammation in CAD</span>
+                        <span class="card-meta">Mar 2024 – Nov 2025</span>
+                    </div>
+                    <div class="card-role">Independent Researcher</div>
+                    <div class="card-desc">
+                        <strong>Cytokine Networks: Pathophysiology and Therapeutic Implications</strong>
+                        Investigating the cytokine-driven inflammatory landscape of coronary artery disease to map the pathophysiological mechanisms and identify novel therapeutic targets.
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Leadership</h2>
+                <div class="card scroll-reveal">
+                    <div class="card-header">
+                        <span class="card-title">Hack4Health</span>
+                        <span class="card-meta">Aug 2025 – Present</span>
+                    </div>
+                    <div class="card-role">Solo Organizer</div>
+                    <ul class="metrics-list">
+                        <li>Led AI4Alzheimers, one of the world’s largest student-led hackathons, hosting 1,470 global participants.</li>
+                        <li>Secured partnerships with 20+ organizations, raising $100K+ in sponsorship funding and prizes.</li>
+                        <li>Negotiated recurring sponsorship agreement with Coder, securing $3,000 annually.</li>
+                        <li>Recruited 20 research mentors, bringing 100+ publications and 500+ citations.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Academic_Profile</h2>
+                <div class="card scroll-reveal">
+                    <div class="card-header">
+                        <span class="card-title">Los Gatos High School</span>
+                        <span class="card-meta">Class of 2028</span>
+                    </div>
+                    
+                    <div class="data-grid">
+                        <div class="data-box">
+                            <div class="data-label">GPA (UW/W)</div>
+                            <div class="data-value">4.0 / 4.67</div>
+                        </div>
+                        <div class="data-box">
+                            <div class="data-label">SAT Score</div>
+                            <div class="data-value">1570 (770R/800M)</div>
+                        </div>
+                    </div>
+
+                    <ul class="metrics-list">
+                        <li><strong>Relevant Coursework:</strong> AP Calculus BC, AP European History, English 10 Honors, Spanish 4 Honors</li>
+                        <li><strong>Self-Studied:</strong> AP Biology, AP Chemistry, AP Statistics</li>
+                        <li><strong>MIT OCW:</strong> Introduction to Computer Science and Programming in Python; Intro to Computational Thinking and Data Science</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Custom Cursor Logic
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+            
+            // Add a slight delay to the follower for a smooth trailing effect
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 50);
+        });
+
+        // Hover effect for interactive elements
+        const hoverElements = document.querySelectorAll('a, .card');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorFollower.style.width = '60px';
+                cursorFollower.style.height = '60px';
+                cursorFollower.style.backgroundColor = 'rgba(0, 243, 255, 0.1)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorFollower.style.width = '40px';
+                cursorFollower.style.height = '40px';
+                cursorFollower.style.backgroundColor = 'transparent';
+            });
+        });
+
+        // Scroll Reveal Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
