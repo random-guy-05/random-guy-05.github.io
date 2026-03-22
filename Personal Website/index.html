@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Arnav Mana is a Clinical AI Researcher focusing on computational biology, predictive architectures, and molecular biology in health tech.">
+<meta name="keywords" content="Arnav Mana, Clinical AI, Computational Biology, Health Tech, Machine Learning, Researcher">
+<meta property="og:title" content="Arnav Mana — Clinical AI Researcher">
+<meta property="og:description" content="Decoding critical cardiac pathways through predictive architectures and molecular biology.">
+<meta property="og:type" content="website">
 <title>Arnav Mana — Clinical AI Researcher</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,10 +15,10 @@
 <style>
 :root {
   --bg:#060605;
-  --text:#f5f0e8;
-  --muted:#8a8278;
-  --gold:#c9a84c;
-  --border:rgba(245,240,232,.07);
+  --text:#fdfbf7;
+  --muted:#a39b90;
+  --gold:#d4b55b;
+  --border:rgba(245,240,232,.12);
 }
 
 * {
@@ -32,8 +37,12 @@ body {
   color:var(--text);
   overflow-x:hidden;
   line-height:1.75;
-  cursor:none;
+  cursor:auto;
   -webkit-font-smoothing:antialiased;
+}
+
+body.custom-cursor {
+  cursor:none;
 }
 
 h1,h2,h3,.serif {
@@ -147,6 +156,7 @@ h1,h2,h3,.serif {
   left:0;
   will-change:transform;
   transition:width .2s,height .2s,background .2s;
+  opacity:0;
 }
 
 .cur-ring {
@@ -161,6 +171,12 @@ h1,h2,h3,.serif {
   left:0;
   will-change:transform;
   transition:border-color .3s,width .3s,height .3s,background .3s;
+  opacity:0;
+}
+
+body.custom-cursor .cur-dot,
+body.custom-cursor .cur-ring {
+  opacity:1;
 }
 
 /* NAV — auto-hide */
@@ -242,6 +258,20 @@ nav.hide {
   transition:opacity .3s;
   display:inline-block;
   position:relative;
+}
+
+button.mag-link {
+  background:transparent;
+  border:none;
+  font-family:inherit;
+  padding:0;
+  cursor:pointer;
+}
+
+button.mag-link:focus-visible,
+a.mag-link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
 }
 
 .mag-link::after {
@@ -596,6 +626,11 @@ nav.hide {
   overflow:hidden;
 }
 
+.codex-entry:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
 .codex-entry:last-child {
   border-bottom:1px solid var(--border);
 }
@@ -619,14 +654,14 @@ nav.hide {
   font-family:'Playfair Display',serif;
   font-size:3.5rem;
   font-style:italic;
-  color:rgba(201,168,76,.22);
+  color:rgba(212,181,91,.3);
   line-height:1;
   padding-top:.15rem;
   transition:color .4s;
 }
 
 .codex-entry.open .codex-num {
-  color:rgba(201,168,76,.65);
+  color:rgba(212,181,91,.8);
 }
 
 .codex-org {
@@ -649,7 +684,7 @@ nav.hide {
 .codex-pull {
   font-style:italic;
   font-size:1.25rem;
-  color:rgba(201,168,76,.8);
+  color:rgba(212,181,91,.9);
   margin-bottom:1rem;
 }
 
@@ -689,7 +724,7 @@ nav.hide {
 
 .codex-entry.open .codex-toggle {
   transform:rotate(45deg);
-  border-color:rgba(201,168,76,.4);
+  border-color:rgba(212,181,91,.6);
 }
 
 .codex-stats {
@@ -791,6 +826,11 @@ nav.hide {
   transform:scale(.93) perspective(1000px) rotateY(6deg);
   opacity:.6;
   transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .5s;
+}
+
+.proj-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
 }
 
 .proj-card.active-card {
@@ -967,13 +1007,13 @@ nav.hide {
   padding:0 3rem;
   color:transparent;
   text-transform:uppercase;
-  -webkit-text-stroke:1px rgba(245,240,232,.18);
+  -webkit-text-stroke:1px rgba(253,251,247,.25);
   transition:color .4s,-webkit-text-stroke .4s;
 }
 
 .mq.it {
   font-style:italic;
-  -webkit-text-stroke-color:rgba(201,168,76,.3);
+  -webkit-text-stroke-color:rgba(212,181,91,.4);
 }
 
 .mq:hover {
@@ -988,7 +1028,7 @@ nav.hide {
 .mq-sep {
   font-family:'Playfair Display',serif;
   font-size:4.5rem;
-  color:rgba(201,168,76,.2);
+  color:rgba(212,181,91,.3);
   padding:0 .5rem;
 }
 
@@ -1107,6 +1147,18 @@ footer {
   cursor:pointer;
 }
 
+button.footer-link {
+  background:transparent;
+  border:none;
+  padding:0;
+}
+
+button.footer-link:focus-visible,
+a.footer-link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
 .footer-link::after {
   content:'';
   position:absolute;
@@ -1166,6 +1218,18 @@ footer {
 
 }
 
+@media(prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior:auto;
+  }
+
+  *,*::before,*::after {
+    animation:none !important;
+    transition:none !important;
+  }
+
+}
+
 </style>
 </head>
 <body>
@@ -1185,8 +1249,8 @@ footer {
   <div class="nav-logo">Arnav Mana</div>
   <div class="nav-right">
     <div class="avail-badge"><div class="avail-dot"></div><span>Open to research</span></div>
-    <span id="navSection" style="font-style:italic;font-size:.9rem;color:rgba(245,240,232,.45);"></span>
-    <a class="mag-link" onclick="copyEmail()" style="cursor:pointer;">Email me</a>
+    <span id="navSection" style="font-style:italic;font-size:.9rem;color:rgba(245,240,232,.45);" aria-live="polite"></span>
+    <button type="button" class="mag-link" onclick="copyEmail()" aria-label="Copy email address to clipboard">Email me</button>
   </div>
 </nav>
 
@@ -1198,7 +1262,7 @@ footer {
     <p class="hero-eyebrow reveal">Computational Biology &amp; Clinical AI</p>
     <h1 class="hero-name reveal" id="heroName" aria-label="Arnav Mana">Arnav Mana</h1>
     <p class="hero-tagline reveal d1">"The heart speaks in data. I translate."</p>
-    <p class="hero-bio reveal d2" id="heroBio">Decoding critical cardiac pathways through predictive architectures and molecular biology — translating high-dimensional physiological datasets into precision interventions that identify high-risk patient trajectories before they become irreversible.</p>
+    <p class="hero-bio reveal d2" id="heroBio">Decoding critical cardiac pathways through predictive architectures and molecular biology. I translate high-dimensional physiological datasets into precision interventions, identifying high-risk patient trajectories before they become irreversible.</p>
     <div class="hero-facts reveal d3">
       <div><div class="hero-fact-label">Age</div><div class="hero-fact-val">16</div></div>
       <div><div class="hero-fact-label">Based in</div><div class="hero-fact-val">Los Gatos, CA</div></div>
@@ -1208,16 +1272,19 @@ footer {
       <p class="typewriter-label">Currently building</p>
       <p class="typewriter-text" id="twEl"><span class="tw-cur"></span></p>
     </div>
+    <div class="reveal d3" style="margin-top: 3rem; position: relative; z-index: 1;">
+      <a href="#" class="mag-link" style="display: inline-block; padding: 0.8rem 2rem; border: 1px solid var(--gold); border-radius: 4px; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-style: normal; transition: all 0.3s;" aria-label="Download Curriculum Vitae">Download CV</a>
+    </div>
   </section>
 
   <!-- AWARDS -->
   <section class="snap-section tall" id="sec-awards" data-sec="Recognition">
     <div class="sec-counter">01</div>
     <div class="reveal"><p class="section-kicker">Recognition</p>
-    <h2 class="section-title" data-scramble data-text="Things I've earned">Things I've earned</h2>
+    <h2 class="section-title" data-scramble data-text="Things I've earned" data-scramble-html="Things I've earned">Things I've earned</h2>
     <div class="section-rule"></div></div>
     <div class="codex-list">
-      <div class="codex-entry reveal" tabindex="0">
+      <div class="codex-entry reveal" tabindex="0" role="button" aria-expanded="false">
         <div class="codex-num">01</div>
         <div class="codex-body">
           <p class="codex-org">Boy Scouts of America &nbsp;·&nbsp; Class of 2027</p>
@@ -1225,19 +1292,19 @@ footer {
           <p class="codex-pull">"One of ten in a century."</p>
           <div class="codex-detail">Recognized as one of the 10 youngest Eagle Scouts in the century-long history of the Boy Scouts of America, and the absolute youngest in Troop 539's 100+ year existence. Demonstrated sustained executive leadership, multifaceted skill acquisition, and extensive community infrastructure development.</div>
         </div>
-        <div class="codex-toggle">+</div>
+        <div class="codex-toggle" aria-hidden="true">+</div>
         <!-- Badge stamp -->
-        <svg class="badge-stamp" viewBox="0 0 100 100">
+        <svg class="badge-stamp" viewBox="0 0 100 100" aria-hidden="true">
           <defs><path id="circ" d="M50,50 m-35,0 a35,35 0 1,1 70,0 a35,35 0 1,1 -70,0"/></defs>
-          <circle cx="50" cy="50" r="44" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
-          <circle cx="50" cy="50" r="36" fill="none" stroke="#c9a84c" stroke-width=".5" stroke-dasharray="3 2"/>
-          <text font-family="'Playfair Display',serif" font-size="10" fill="#c9a84c" letter-spacing="2">
+          <circle cx="50" cy="50" r="44" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="var(--gold)" stroke-width=".5" stroke-dasharray="3 2"/>
+          <text font-family="'Playfair Display',serif" font-size="10" fill="var(--gold)" letter-spacing="2">
             <textPath href="#circ">EAGLE SCOUT · BSA · 2027 · CLASS OF</textPath>
           </text>
-          <text x="50" y="54" text-anchor="middle" font-family="'Playfair Display',serif" font-size="22" fill="#c9a84c" font-style="italic">✧</text>
+          <text x="50" y="54" text-anchor="middle" font-family="'Playfair Display',serif" font-size="22" fill="var(--gold)" font-style="italic">✧</text>
         </svg>
       </div>
-      <div class="codex-entry reveal d1" tabindex="0">
+      <div class="codex-entry reveal d1" tabindex="0" role="button" aria-expanded="false">
         <div class="codex-num">02</div>
         <div class="codex-body">
           <p class="codex-org">Center for Excellence in Education &nbsp;·&nbsp; 2025</p>
@@ -1245,18 +1312,18 @@ footer {
           <p class="codex-pull">"Top few percent, nationally."</p>
           <div class="codex-detail">Advanced to the elite national qualifying stage, validating mastery over graduate-level cellular biology, human physiology, genetics, and complex biosystems. Selected from tens of thousands of participants nationwide.</div>
         </div>
-        <div class="codex-toggle">+</div>
-        <svg class="badge-stamp" viewBox="0 0 100 100">
+        <div class="codex-toggle" aria-hidden="true">+</div>
+        <svg class="badge-stamp" viewBox="0 0 100 100" aria-hidden="true">
           <defs><path id="circ2" d="M50,50 m-35,0 a35,35 0 1,1 70,0 a35,35 0 1,1 -70,0"/></defs>
-          <circle cx="50" cy="50" r="44" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
-          <circle cx="50" cy="50" r="36" fill="none" stroke="#c9a84c" stroke-width=".5" stroke-dasharray="3 2"/>
-          <text font-family="'Playfair Display',serif" font-size="9.5" fill="#c9a84c" letter-spacing="1.5">
+          <circle cx="50" cy="50" r="44" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="var(--gold)" stroke-width=".5" stroke-dasharray="3 2"/>
+          <text font-family="'Playfair Display',serif" font-size="9.5" fill="var(--gold)" letter-spacing="1.5">
             <textPath href="#circ2">USABO · SEMIFINALIST · NATIONAL · 2025</textPath>
           </text>
-          <text x="50" y="54" text-anchor="middle" font-family="'Playfair Display',serif" font-size="22" fill="#c9a84c" font-style="italic">✦</text>
+          <text x="50" y="54" text-anchor="middle" font-family="'Playfair Display',serif" font-size="22" fill="var(--gold)" font-style="italic">✦</text>
         </svg>
       </div>
-      <div class="codex-entry reveal d2" tabindex="0">
+      <div class="codex-entry reveal d2" tabindex="0" role="button" aria-expanded="false">
         <div class="codex-num">03</div>
         <div class="codex-body">
           <p class="codex-org">Los Gatos High School &nbsp;·&nbsp; Class of 2028</p>
@@ -1268,7 +1335,7 @@ footer {
           </div>
           <div class="codex-detail" style="margin-top:1.5rem">AP Calculus BC · AP Biology · AP Chemistry · AP Statistics · MIT OCW: Computation &amp; AI</div>
         </div>
-        <div class="codex-toggle">+</div>
+        <div class="codex-toggle" aria-hidden="true">+</div>
       </div>
     </div>
   </section>
@@ -1277,46 +1344,46 @@ footer {
   <section class="snap-section tall" id="sec-work" data-sec="Investigations">
     <div class="sec-counter">02</div>
     <div class="reveal"><p class="section-kicker">Investigations</p>
-    <h2 class="section-title" data-scramble data-text="Where I do the work">Where I do <em>the work</em></h2>
+    <h2 class="section-title" data-scramble data-text="Where I do the work" data-scramble-html="Where I do <em>the work</em>">Where I do <em>the work</em></h2>
     <div class="section-rule"></div></div>
     <p class="slider-intro reveal d1">Five active investigations —</p>
     <p class="slider-hint reveal d2">← drag to explore →</p>
     <div class="slider-outer reveal d2">
       <div class="slider-scroll" id="projSlider">
         <div class="slider-track">
-          <div class="proj-card glow-card tint-amber" data-tint="amber">
+          <div class="proj-card glow-card tint-amber" data-tint="amber" tabindex="0" aria-label="Project 1: Redefining the Predictive Architecture of Lactate">
             <div class="proj-status"><div class="status-dot green"></div><span style="color:#4ade80">Ongoing</span></div>
             <div class="card-inner">
-              <div><p class="proj-num">No. I</p><p class="proj-label" style="color:#c9a84c">UCSF Cardiac Critical Care · Aug 2025</p><h3 class="proj-title">Redefining the Predictive Architecture of Lactate</h3></div>
-              <p class="proj-body">Engineering advanced network analyses to decode interactions between hemodynamic modifiers and SHARC phenotypes — transforming lactate from a reactionary marker into a precision forecast for the STEMI-to-heart-failure-shock transition.</p>
+              <div><p class="proj-num">No. I</p><p class="proj-label" style="color:var(--gold)">UCSF Cardiac Critical Care · Aug 2025</p><h3 class="proj-title">Redefining the Predictive Architecture of Lactate</h3></div>
+              <p class="proj-body">Engineering advanced network analyses to decode interactions between hemodynamic modifiers and SHARC phenotypes — transforming lactate from a reactionary marker into a precision forecast for the STEMI-to-heart-failure-shock transition. Utilizing Python, PyTorch, and high-dimensional physiological datasets to build predictive models.</p>
             </div>
           </div>
-          <div class="proj-card glow-card tint-slate" data-tint="slate">
+          <div class="proj-card glow-card tint-slate" data-tint="slate" tabindex="0" aria-label="Project 2: Glycosphingolipid-Cytokine Axis in HLHS">
             <div class="proj-status"><div class="status-dot green"></div><span style="color:#4ade80">Ongoing</span></div>
             <div class="card-inner">
               <div><p class="proj-num">No. II</p><p class="proj-label" style="color:#7090c0">CU Anschutz School of Medicine · May 2024</p><h3 class="proj-title">Glycosphingolipid-Cytokine Axis in HLHS</h3></div>
-              <p class="proj-body">Critical pathway analysis unearthing the molecular interplay between glycosphingolipid signaling and cytokine cascades — decoding the primary drivers behind HLHS severity and structural progression.</p>
+              <p class="proj-body">Critical pathway analysis unearthing the molecular interplay between glycosphingolipid signaling and cytokine cascades — decoding the primary drivers behind HLHS severity and structural progression. Employing RT-qPCR and ELISA assays to quantify expression levels and validate computational findings.</p>
             </div>
           </div>
-          <div class="proj-card glow-card tint-indigo" data-tint="indigo">
+          <div class="proj-card glow-card tint-indigo" data-tint="indigo" tabindex="0" aria-label="Project 3: Latent Topologies of Cardiogenic Shock via GATv2">
             <div class="proj-status"><div class="status-dot green"></div><span style="color:#4ade80">Ongoing</span></div>
             <div class="card-inner">
               <div><p class="proj-num">No. III</p><p class="proj-label" style="color:#9585cc">Computational Cardiology · Aug 2025</p><h3 class="proj-title">Latent Topologies of Cardiogenic Shock via GATv2</h3></div>
-              <p class="proj-body">A custom Graph Attention Network (PhysioGraph) optimizing the SCAI staging system — processing high-fidelity hemodynamic timeseries to isolate latent signatures for earliest clinical intervention in STEMI shock.</p>
+              <p class="proj-body">A custom Graph Attention Network (PhysioGraph) optimizing the SCAI staging system — processing high-fidelity hemodynamic timeseries to isolate latent signatures for earliest clinical intervention in STEMI shock. Achieved a 15% improvement in early detection accuracy over baseline models.</p>
             </div>
           </div>
-          <div class="proj-card glow-card tint-forest" data-tint="forest">
+          <div class="proj-card glow-card tint-forest" data-tint="forest" tabindex="0" aria-label="Project 4: Chronic Intermittent Hypoxia &amp; the Metabolic Shield">
             <div class="proj-status"><div class="status-dot green"></div><span style="color:#4ade80">Ongoing</span></div>
             <div class="card-inner">
               <div><p class="proj-num">No. IV</p><p class="proj-label" style="color:#70a890">Clinical Outcomes Analysis · Aug 2025</p><h3 class="proj-title">Chronic Intermittent Hypoxia &amp; the Metabolic Shield</h3></div>
-              <p class="proj-body">A population study on 2,653 cardiac arrest patients using IPTW and linear mixed-effects models — discovering that OSA induces an endogenous ischemic shield that meaningfully reduces post-arrest mortality.</p>
+              <p class="proj-body">A population study on 2,653 cardiac arrest patients using IPTW and linear mixed-effects models — discovering that OSA induces an endogenous ischemic shield that meaningfully reduces post-arrest mortality. Data analysis performed using R and advanced statistical modeling techniques.</p>
             </div>
           </div>
-          <div class="proj-card glow-card tint-rose" data-tint="rose">
-            <div class="proj-status"><div class="status-dot amber"></div><span style="color:#c9a84c">Complete</span></div>
+          <div class="proj-card glow-card tint-rose" data-tint="rose" tabindex="0" aria-label="Project 5: Cytokine Networks in Coronary Artery Disease">
+            <div class="proj-status"><div class="status-dot amber"></div><span style="color:var(--gold)">Complete</span></div>
             <div class="card-inner">
               <div><p class="proj-num">No. V</p><p class="proj-label" style="color:#c07085">Pathophysiology Review · Mar 2024 – Nov 2025</p><h3 class="proj-title">Cytokine Networks in Coronary Artery Disease</h3></div>
-              <p class="proj-body">A systematic review mathematically mapping the cytokine-driven inflammatory landscape in CAD — pinpointing mechanistic failures and isolating novel candidates for targeted pharmacological therapy.</p>
+              <p class="proj-body">A systematic review mathematically mapping the cytokine-driven inflammatory landscape in CAD — pinpointing mechanistic failures and isolating novel candidates for targeted pharmacological therapy. Synthesized data from over 150 peer-reviewed publications to construct a comprehensive interaction network.</p>
             </div>
           </div>
         </div>
@@ -1332,12 +1399,12 @@ footer {
   <section class="snap-section" id="sec-skills" data-sec="The Arsenal">
     <div class="sec-counter" style="font-size:18vw">03</div>
     <div class="reveal"><p class="section-kicker">What I work with</p>
-    <h2 class="section-title" data-scramble data-text="The Arsenal">The Arsenal</h2>
+    <h2 class="section-title" data-scramble data-text="The Arsenal" data-scramble-html="The Arsenal">The Arsenal</h2>
     <div class="section-rule"></div></div>
-    <div class="marquee-section reveal d1">
+    <div class="marquee-section reveal d1" aria-label="Technical Skills Marquee">
       <div class="mq-row l" style="animation-duration:28s">
-        <span class="mq">Python</span><span class="mq-sep">·</span><span class="mq it">R</span><span class="mq-sep">·</span><span class="mq">MATLAB</span><span class="mq-sep">·</span><span class="mq it">Swift</span><span class="mq-sep">·</span><span class="mq">SQL</span><span class="mq-sep">·</span><span class="mq it">JavaScript</span><span class="mq-sep">·</span><span class="mq">HTML &amp; CSS</span><span class="mq-sep">·</span>
-        <span class="mq">Python</span><span class="mq-sep">·</span><span class="mq it">R</span><span class="mq-sep">·</span><span class="mq">MATLAB</span><span class="mq-sep">·</span><span class="mq it">Swift</span><span class="mq-sep">·</span><span class="mq">SQL</span><span class="mq-sep">·</span><span class="mq it">JavaScript</span><span class="mq-sep">·</span><span class="mq">HTML &amp; CSS</span><span class="mq-sep">·</span>
+        <span class="mq">Python</span><span class="mq-sep">·</span><span class="mq it">PyTorch</span><span class="mq-sep">·</span><span class="mq">R</span><span class="mq-sep">·</span><span class="mq">MATLAB</span><span class="mq-sep">·</span><span class="mq it">Swift</span><span class="mq-sep">·</span><span class="mq">SQL</span><span class="mq-sep">·</span><span class="mq it">JavaScript</span><span class="mq-sep">·</span><span class="mq">HTML &amp; CSS</span><span class="mq-sep">·</span>
+        <span class="mq">Python</span><span class="mq-sep">·</span><span class="mq it">PyTorch</span><span class="mq-sep">·</span><span class="mq">R</span><span class="mq-sep">·</span><span class="mq">MATLAB</span><span class="mq-sep">·</span><span class="mq it">Swift</span><span class="mq-sep">·</span><span class="mq">SQL</span><span class="mq-sep">·</span><span class="mq it">JavaScript</span><span class="mq-sep">·</span><span class="mq">HTML &amp; CSS</span><span class="mq-sep">·</span>
       </div>
       <div class="mq-row r" style="animation-duration:40s">
         <span class="mq it">RT-qPCR</span><span class="mq-sep">·</span><span class="mq">Gel Electrophoresis</span><span class="mq-sep">·</span><span class="mq it">ELISA Assays</span><span class="mq-sep">·</span><span class="mq">PAGE</span><span class="mq-sep">·</span><span class="mq it">Quantitative PCR</span><span class="mq-sep">·</span>
@@ -1350,7 +1417,7 @@ footer {
   <section class="snap-section tall" id="sec-leadership" data-sec="Leadership">
     <div class="sec-counter">04</div>
     <div class="reveal"><p class="section-kicker">Leadership</p>
-    <h2 class="section-title" data-scramble data-text="What I built from nothing">What I built <em>from nothing</em></h2>
+    <h2 class="section-title" data-scramble data-text="What I built from nothing" data-scramble-html="What I built <em>from nothing</em>">What I built <em>from nothing</em></h2>
     <div class="section-rule"></div></div>
     <div class="stat-block glow-card reveal d1">
       <div class="stat-hero">
@@ -1373,8 +1440,8 @@ footer {
     <p class="footer-name reveal">Arnav Mana</p>
     <p class="footer-tagline reveal d1">"The heart speaks in data. I translate."</p>
     <div class="footer-links reveal d2">
-      <span class="footer-link" onclick="copyEmail()">arnavmana.me@gmail.com</span>
-      <a href="tel:+14086561171" class="footer-link mag-link">Phone</a>
+      <button type="button" class="footer-link" onclick="copyEmail()" aria-label="Copy email address to clipboard">arnavmana.me@gmail.com</button>
+      <a href="tel:+14086561171" class="footer-link mag-link" aria-label="Call phone number">Phone</a>
     </div>
   </footer>
 
@@ -1389,6 +1456,10 @@ const phrases=['Redefining the predictive architecture of lactate...','A GATv2 m
 const twEl=document.getElementById('twEl');
 let pi=0,ci=0,del=false;
 function type(){
+  if (prefersReducedMotion) {
+    twEl.innerHTML = phrases[0];
+    return;
+  }
   const p=phrases[pi];
   if(!del){ci++;twEl.innerHTML=p.slice(0,ci)+'<span class="tw-cur"></span>';
     if(ci===p.length){del=true;setTimeout(type,2000);return;}
@@ -1402,25 +1473,40 @@ setTimeout(type,1200);
 
 // ── Cursor (fully rAF-driven for silky smoothness)
 const dot=document.getElementById('curDot'),ring=document.getElementById('curRing');
-let mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{ passive:true });
+const supportsFinePointer=window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+let mx=0,my=0,rx=0,ry=0;
 
-// Single rAF loop: cursor + ring + glow-card spotlight
-(function rafLoop(){
-  // Dot tracks instantly
-  dx+=(mx-dx)*1;  // direct
-  dy+=(my-dy)*1;
-  dot.style.transform=`translate3d(${mx-3.5}px,${my-3.5}px,0)`;
-  // Ring lags behind
-  rx+=(mx-rx)*.10;
-  ry+=(my-ry)*.10;
-  ring.style.transform=`translate3d(${rx-22}px,${ry-22}px,0)`;
-  requestAnimationFrame(rafLoop);
-}());
+if(supportsFinePointer){
+  document.body.classList.add('custom-cursor');
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{ passive:true });
 
-// Remove translate(-50%,-50%) since we account for half-sizes above
-dot.style.top='0';dot.style.left='0';
-ring.style.top='0';ring.style.left='0';
+  // Single rAF loop: cursor + ring
+  (function rafLoop(){
+    dot.style.transform=`translate3d(${mx-3.5}px,${my-3.5}px,0)`;
+    rx+=(mx-rx)*.10;
+    ry+=(my-ry)*.10;
+    ring.style.transform=`translate3d(${rx-22}px,${ry-22}px,0)`;
+    requestAnimationFrame(rafLoop);
+  }());
+
+  dot.style.top='0';dot.style.left='0';
+  ring.style.top='0';ring.style.left='0';
+
+  document.querySelectorAll('a,button,.glow-card,.mq,.codex-entry,.footer-link').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{
+      ring.style.width='65px';ring.style.height='65px';
+      ring.style.borderColor='rgba(201,168,76,.5)';
+      ring.style.background='rgba(201,168,76,.04)';
+      dot.style.background='var(--gold)';dot.style.width='9px';dot.style.height='9px';
+    });
+    el.addEventListener('mouseleave',()=>{
+      ring.style.width='44px';ring.style.height='44px';
+      ring.style.borderColor='rgba(245,240,232,.35)';
+      ring.style.background='transparent';
+      dot.style.background='var(--text)';dot.style.width='7px';dot.style.height='7px';
+    });
+  });
+}
 
 document.addEventListener('mousemove',e=>{
   document.querySelectorAll('.glow-card').forEach(c=>{
@@ -1429,21 +1515,6 @@ document.addEventListener('mousemove',e=>{
     c.style.setProperty('--my',`${e.clientY-r.top}px`);
   });
 },{ passive:true });
-
-document.querySelectorAll('a,.glow-card,.mq,.codex-entry,.footer-link').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{
-    ring.style.width='65px';ring.style.height='65px';
-    ring.style.borderColor='rgba(201,168,76,.5)';
-    ring.style.background='rgba(201,168,76,.04)';
-    dot.style.background='var(--gold)';dot.style.width='9px';dot.style.height='9px';
-  });
-  el.addEventListener('mouseleave',()=>{
-    ring.style.width='44px';ring.style.height='44px';
-    ring.style.borderColor='rgba(245,240,232,.35)';
-    ring.style.background='transparent';
-    dot.style.background='var(--text)';dot.style.width='7px';dot.style.height='7px';
-  });
-});
 
 // ── Magnetic links
 document.querySelectorAll('.mag-link').forEach(el=>{
@@ -1457,6 +1528,7 @@ const heroBio=document.getElementById('heroBio');
 const pb=document.getElementById('pb');
 const b1El=document.getElementById('b1'),b2El=document.getElementById('b2');
 let lastScroll=0,scrollDirty=false;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 window.addEventListener('scroll',()=>{ scrollDirty=true; },{ passive:true });
 
@@ -1468,15 +1540,17 @@ window.addEventListener('scroll',()=>{ scrollDirty=true; },{ passive:true });
     const docH=Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
     const maxY=docH-window.innerHeight;
     // Progress bar
-    pb.style.width=(y/maxY*100)+'%';
+    pb.style.width=(maxY>0?(y/maxY*100):0)+'%';
     // Nav hide
     navEl.classList.toggle('hide',y>lastScroll&&y>150);
     lastScroll=y;
     // Parallax
-    heroEl.style.transform=`translateY(${-y*.28}px)`;
-    if(heroBio)heroBio.style.transform=`translateY(${-y*.09}px)`;
-    b1El.style.transform=`translateY(${y*.09}px)`;
-    b2El.style.transform=`translateY(${-y*.06}px)`;
+    if (!prefersReducedMotion) {
+      heroEl.style.transform=`translateY(${-y*.28}px)`;
+      if(heroBio)heroBio.style.transform=`translateY(${-y*.09}px)`;
+      b1El.style.transform=`translateY(${y*.09}px)`;
+      b2El.style.transform=`translateY(${-y*.06}px)`;
+    }
   }
   requestAnimationFrame(scrollRaf);
 }());
@@ -1504,14 +1578,22 @@ document.querySelectorAll('.reveal').forEach(el=>rio.observe(el));
 // ── Text scramble on section titles
 const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \'';
 function scramble(el){
-  const t=el.dataset.text; let iter=0;
+  if (prefersReducedMotion) return;
+  const t=el.dataset.text||el.textContent||'';
+  const finalHtml=el.dataset.scrambleHtml||el.innerHTML;
+  let iter=0;
   const iv=setInterval(()=>{
-    el.innerHTML=t.split('').map((ch,i)=>{
+    el.textContent=t.split('').map((ch,i)=>{
       if(ch===' ')return ' ';
-      if(i<iter)return ch==='<'?'<':t[i];
+      if(i<iter)return t[i];
       return chars[Math.floor(Math.random()*chars.length)];
     }).join('');
-    if(iter>=t.length)clearInterval(iv);iter+=.4;
+    if(iter>=t.length){
+      clearInterval(iv);
+      el.innerHTML=finalHtml;
+      return;
+    }
+    iter+=.4;
   },38);
 }
 const sio=new IntersectionObserver(entries=>{
@@ -1533,10 +1615,21 @@ document.querySelectorAll('.proj-card').forEach(c=>{
 document.querySelectorAll('.codex-entry').forEach(entry=>{
   entry.addEventListener('click',()=>{
     const wasOpen=entry.classList.contains('open');
-    document.querySelectorAll('.codex-entry.open').forEach(e=>e.classList.remove('open'));
-    if(!wasOpen)entry.classList.add('open');
+    document.querySelectorAll('.codex-entry.open').forEach(e=>{
+      e.classList.remove('open');
+      e.setAttribute('aria-expanded','false');
+    });
+    if(!wasOpen){
+      entry.classList.add('open');
+      entry.setAttribute('aria-expanded','true');
+    }
   });
-  entry.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')entry.click();});
+  entry.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){
+      e.preventDefault();
+      entry.click();
+    }
+  });
 });
 
 // ── Native Slider setup
@@ -1554,11 +1647,30 @@ cards[0].classList.add('active-card');
 slider.addEventListener('scroll', updateActive, {passive:true});
 
 // ── Clipboard email + toast
-function copyEmail(){
-  navigator.clipboard.writeText('arnavmana.me@gmail.com').then(()=>{
-    const t=document.getElementById('toast');t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'),2500);
-  });
+function showToast(message){
+  const t=document.getElementById('toast');
+  t.textContent=message;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+async function copyEmail(){
+  const email='arnavmana.me@gmail.com';
+  try{
+    await navigator.clipboard.writeText(email);
+    showToast('Email copied to clipboard');
+  }catch{
+    const ta=document.createElement('textarea');
+    ta.value=email;
+    ta.setAttribute('readonly','');
+    ta.style.position='absolute';
+    ta.style.left='-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('Email copied to clipboard');
+  }
 }
 
 </script>
