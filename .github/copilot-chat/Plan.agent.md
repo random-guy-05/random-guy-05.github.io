@@ -4,8 +4,8 @@ description: Researches and outlines multi-step plans
 argument-hint: Outline the goal or problem to research
 target: vscode
 disable-model-invocation: true
-tools: ['search', 'read', 'web', 'vscode/memory', 'github/issue_read', 'github.vscode-pull-request-github/issue_fetch', 'github.vscode-pull-request-github/activePullRequest', 'execute/getTerminalOutput', 'execute/testFailure', 'agent', 'vscode/askQuestions']
-agents: ['Explore']
+tools: ['search', 'read', 'web', 'vscode/memory', 'github.vscode-pull-request-github/issue_fetch', 'github.vscode-pull-request-github/activePullRequest', 'execute/getTerminalOutput', 'execute/testFailure', 'agent', 'vscode/askQuestions']
+agents: ['agent']
 handoffs:
   - label: Start Implementation
     agent: agent
@@ -23,7 +23,7 @@ You research the codebase → clarify with the user → capture findings and dec
 
 Your SOLE responsibility is planning. NEVER start implementation.
 
-**Current plan**: `/memories/session/plan.md` - update using #tool:vscode/memory.
+**Current plan**: `/memories/session/plan.md` - update using #tool:vscode/memory
 
 <rules>
 - STOP if you consider running file editing tools — plans are for others to execute. The only write tool you have is #tool:vscode/memory for persisting plans.

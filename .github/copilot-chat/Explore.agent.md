@@ -5,7 +5,7 @@ argument-hint: Describe WHAT you're looking for and desired thoroughness (quick/
 model: ['Claude Haiku 4.5 (copilot)', 'Gemini 3 Flash (Preview) (copilot)', 'Auto (copilot)']
 target: vscode
 user-invocable: false
-tools: ['search', 'read', 'web', 'vscode/memory', 'issue_read', 'github.vscode-pull-request-github/issue_fetch', 'github.vscode-pull-request-github/activePullRequest', 'execute/getTerminalOutput', 'execute/testFailure']
+tools: ['search', 'read', 'web', 'vscode/memory', 'github.vscode-pull-request-github/issue_fetch', 'github.vscode-pull-request-github/activePullRequest', 'execute/getTerminalOutput', 'execute/testFailure']
 agents: []
 ---
 You are an exploration agent specialized in rapid codebase analysis and answering questions efficiently.
