@@ -58,6 +58,7 @@ export default function App() {
       <BackgroundBlobs tone={activeTone} />
       <Toast message={copied} />
       <TopNav
+        name={siteContent.name}
         activeSection={activeSection}
         hidden={navHidden}
         onCopyEmail={handleCopyEmail}
@@ -74,17 +75,20 @@ export default function App() {
             }
           }}
         />
-        <SkillsMarqueeSection rows={siteContent.skills} />
+        <SkillsMarqueeSection rows={siteContent.capabilities} />
         <LeadershipSection
           headlineLabel={siteContent.leadership.headlineLabel}
           headlinePrefix={siteContent.leadership.headlinePrefix}
           headlineSuffix={siteContent.leadership.headlineSuffix}
           headlineValue={siteContent.leadership.headlineValue}
+          summary={siteContent.leadership.summary}
           role={siteContent.leadership.role}
-          stats={siteContent.leadership.stats}
+          initiatives={siteContent.leadership.initiatives}
+          outcomes={siteContent.leadership.outcomes}
         />
       </main>
       <FooterContactSection
+        name={siteContent.name}
         content={siteContent.contact}
         onCopyEmail={handleCopyEmail}
       />

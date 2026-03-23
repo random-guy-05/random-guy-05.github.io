@@ -1,12 +1,14 @@
 import { Reveal } from "./Reveal";
 
 interface SectionHeadingProps {
+  id?: string;
   kicker: string;
   title: string;
   emphasis?: string;
 }
 
 export function SectionHeading({
+  id,
   kicker,
   title,
   emphasis,
@@ -22,6 +24,7 @@ export function SectionHeading({
     <Reveal className="section-heading">
       <p className="section-kicker">{kicker}</p>
       <h2
+        id={id}
         className="section-title"
         dangerouslySetInnerHTML={{ __html: renderedTitle }}
       />

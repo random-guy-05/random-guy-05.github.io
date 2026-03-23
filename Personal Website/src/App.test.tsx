@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
-import { getCenteredCardIndex } from "./utils/carousel";
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,
@@ -30,13 +29,13 @@ describe("App", () => {
       screen.getByRole("heading", { name: /arnav mana/i, level: 1 }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /things i’ve earned/i, level: 2 }),
+      screen.getByRole("heading", { name: /evidence of rigor/i, level: 2 }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /where i do the work/i, level: 2 }),
+      screen.getByRole("heading", { name: /selected investigations/i, level: 2 }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /what i built from nothing/i, level: 2 }),
+      screen.getByRole("heading", { name: /operational impact/i, level: 2 }),
     ).toBeInTheDocument();
   });
 
@@ -62,25 +61,25 @@ describe("App", () => {
     render(<App />);
 
     expect(
-      screen.getByText(
-        "Redefining the predictive architecture of lactate in cardiogenic shock.",
-      ),
+      screen.getByText("Modeling early deterioration in cardiogenic shock."),
     ).toBeInTheDocument();
   });
-});
 
-describe("getCenteredCardIndex", () => {
-  it("returns the card closest to the container center", () => {
-    const index = getCenteredCardIndex(
-      [
-        { left: 0, width: 200 },
-        { left: 220, width: 200 },
-        { left: 440, width: 200 },
-      ],
-      0,
-      500,
+  it("updates the active research chapter when a new tab is selected", async () => {
+    const user = userEvent.setup();
+
+    render(<App />);
+
+    await user.click(
+      screen.getByRole("tab", {
+        name: /glycosphingolipid-cytokine axis in hlhs/i,
+      }),
     );
 
-    expect(index).toBe(1);
+    expect(
+      screen.getByText(
+        /which signaling relationships may help explain severity and progression in hypoplastic left heart syndrome/i,
+      ),
+    ).toBeInTheDocument();
   });
 });

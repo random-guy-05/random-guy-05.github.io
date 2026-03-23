@@ -7,6 +7,10 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ content, typedText }: HeroSectionProps) {
+  const nameParts = content.name.split(" ");
+  const firstName = nameParts.shift() ?? content.name;
+  const lastName = nameParts.join(" ");
+
   return (
     <section
       id="hero"
@@ -15,41 +19,61 @@ export function HeroSection({ content, typedText }: HeroSectionProps) {
       aria-labelledby="hero-title"
     >
       <div className="hero-glow" aria-hidden="true" />
-      <Reveal as="p" className="hero-eyebrow">
-        {content.eyebrow}
-      </Reveal>
-      <Reveal as="h1" className="hero-title" delay="short" id="hero-title">
-        <span>Arnav</span>
-        <span>Mana</span>
-      </Reveal>
-      <Reveal as="p" className="hero-tagline" delay="medium">
-        {content.tagline}
-      </Reveal>
-      <Reveal as="p" className="hero-bio" delay="medium">
-        {content.bio}
-      </Reveal>
-      <Reveal className="hero-facts" delay="long">
-        {content.heroFacts.map((fact) => (
-          <div className="hero-fact" key={fact.label}>
-            <span className="hero-fact__label">{fact.label}</span>
-            <span className="hero-fact__value">{fact.value}</span>
+      <div className="hero-grid">
+        <div className="hero-copy">
+          <p className="hero-eyebrow">{content.eyebrow}</p>
+          <h1 className="hero-title hero-title--always-visible" id="hero-title">
+            <span>{firstName}</span>
+            <span>{lastName}</span>
+          </h1>
+          <Reveal as="p" className="hero-tagline" delay="short">
+            {content.tagline}
+          </Reveal>
+          <Reveal as="p" className="hero-bio" delay="medium">
+            {content.bio}
+          </Reveal>
+          <Reveal as="p" className="hero-collaborator-note" delay="medium">
+            {content.collaboratorNote}
+          </Reveal>
+          <Reveal className="hero-actions" delay="long">
+            <a className="button button--primary" href="#investigations">
+              Review selected investigations
+            </a>
+            <a className="button button--secondary" href="#contact">
+              Discuss collaboration
+            </a>
+          </Reveal>
+        </div>
+        <div className="hero-sidebar">
+          <Reveal className="hero-panel hero-panel--thesis" delay="short">
+            <p className="hero-panel__label">Research thesis</p>
+            <p className="hero-panel__body">{content.thesis}</p>
+          </Reveal>
+          <Reveal className="hero-panel hero-panel--live" delay="medium">
+            <p className="hero-panel__label">Current thread</p>
+            <p className="hero-panel__body hero-panel__body--live">
+              {typedText}
+              <span className="type-caret" aria-hidden="true" />
+            </p>
+          </Reveal>
+          <Reveal className="hero-facts" delay="long">
+            {content.heroFacts.map((fact) => (
+              <article className="hero-fact" key={fact.label}>
+                <p className="hero-fact__label">{fact.label}</p>
+                <p className="hero-fact__value">{fact.value}</p>
+                <p className="hero-fact__note">{fact.note}</p>
+              </article>
+            ))}
+          </Reveal>
+        </div>
+      </div>
+      <Reveal className="hero-highlight-strip" delay="long">
+        {content.heroHighlights.map((highlight) => (
+          <div className="hero-highlight" key={highlight.label}>
+            <span className="hero-highlight__label">{highlight.label}</span>
+            <strong className="hero-highlight__value">{highlight.value}</strong>
           </div>
         ))}
-      </Reveal>
-      <Reveal className="hero-live-note" delay="long">
-        <p className="hero-live-note__label">Currently building</p>
-        <p className="hero-live-note__value">
-          {typedText}
-          <span className="type-caret" aria-hidden="true" />
-        </p>
-      </Reveal>
-      <Reveal className="hero-actions" delay="long">
-        <a className="button button--primary" href="#investigations">
-          View selected investigations
-        </a>
-        <a className="button button--secondary" href="#contact">
-          Start a conversation
-        </a>
       </Reveal>
     </section>
   );

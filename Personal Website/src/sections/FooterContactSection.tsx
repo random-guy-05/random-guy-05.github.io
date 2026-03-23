@@ -2,11 +2,13 @@ import { Reveal } from "../components/Reveal";
 import type { SiteContent } from "../data/siteContent";
 
 interface FooterContactSectionProps {
+  name: string;
   content: SiteContent["contact"];
   onCopyEmail: () => void;
 }
 
 export function FooterContactSection({
+  name,
   content,
   onCopyEmail,
 }: FooterContactSectionProps) {
@@ -19,13 +21,16 @@ export function FooterContactSection({
     >
       <div className="footer-contact__glow" aria-hidden="true" />
       <Reveal as="p" className="footer-contact__eyebrow">
-        Let’s build something that matters.
+        {content.footerEyebrow}
       </Reveal>
       <Reveal as="h2" className="footer-contact__title" delay="short" id="contact-title">
-        Arnav Mana
+        {name}
       </Reveal>
       <Reveal as="p" className="footer-contact__tagline" delay="medium">
         {content.footerTagline}
+      </Reveal>
+      <Reveal as="p" className="footer-contact__note" delay="medium">
+        {content.footerNote}
       </Reveal>
       <Reveal className="footer-contact__actions" delay="long">
         {content.actions.map((action) => {

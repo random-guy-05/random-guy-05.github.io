@@ -1,9 +1,8 @@
+import { useEffect, useState } from "react";
 import { GlowCard } from "../components/GlowCard";
 import { Reveal } from "../components/Reveal";
 import { SectionHeading } from "../components/SectionHeading";
 import type { ProjectItem } from "../data/siteContent";
-import { useProjectCarousel } from "../hooks/useProjectCarousel";
-import { useEffect } from "react";
 
 interface InvestigationsSectionProps {
   projects: ProjectItem[];
@@ -14,14 +13,27 @@ export function InvestigationsSection({
   projects,
   onProjectActive,
 }: InvestigationsSectionProps) {
-  const { containerRef, activeIndex, scrollToIndex, goToPrevious, goToNext } =
-    useProjectCarousel(projects.length);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeProject = projects[activeIndex] ?? projects[0];
 
   useEffect(() => {
-    if (activeIndex >= 0) {
-      onProjectActive(activeIndex);
-    }
+    onProjectActive(activeIndex);
   }, [activeIndex, onProjectActive]);
+
+  function moveActive(direction: -1 | 1) {
+    setActiveIndex((current) => {
+      const nextIndex = current + direction;
+      if (nextIndex < 0) {
+        return 0;
+      }
+
+      if (nextIndex >= projects.length) {
+        return projects.length - 1;
+      }
+
+      return nextIndex;
+    });
+  }
 
   return (
     <section
@@ -34,99 +46,104 @@ export function InvestigationsSection({
         02
       </div>
       <SectionHeading
+        id="investigations-title"
         kicker="Investigations"
-        title="Where I do the work"
-        emphasis="the work"
+        title="Selected investigations"
       />
       <Reveal as="p" className="section-intro" delay="short">
-        Five active investigations spanning cardiac critical care, translational
-        biology, and applied prediction systems.
+        Instead of a project carousel, this section is organized like a compact
+        research dossier. Each chapter describes the question, method, signal,
+        and why the work matters.
       </Reveal>
-      <Reveal className="carousel-shell" delay="medium">
-        <div className="carousel-controls">
-          <p className="carousel-controls__hint">Swipe, drag, or use the controls.</p>
-          <div className="carousel-controls__buttons">
-            <button
-              className="carousel-button"
-              type="button"
-              onClick={goToPrevious}
-              aria-label="Previous investigation"
-            >
-              Prev
-            </button>
-            <button
-              className="carousel-button"
-              type="button"
-              onClick={goToNext}
-              aria-label="Next investigation"
-            >
-              Next
-            </button>
-          </div>
-        </div>
+      <Reveal className="investigations-layout" delay="medium">
         <div
-          className="carousel-track"
-          ref={containerRef}
-          tabIndex={0}
-          aria-label="Selected investigations"
+          className="chapter-rail"
+          role="tablist"
+          aria-label="Research investigation chapters"
           onKeyDown={(event) => {
-            if (event.key === "ArrowRight") {
+            if (event.key === "ArrowDown" || event.key === "ArrowRight") {
               event.preventDefault();
-              goToNext();
+              moveActive(1);
             }
 
-            if (event.key === "ArrowLeft") {
+            if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
               event.preventDefault();
-              goToPrevious();
+              moveActive(-1);
             }
           }}
         >
           {projects.map((project, index) => (
-            <article
-              className={`project-card ${index === activeIndex ? "is-active" : ""}`}
-              key={project.id}
-              data-project-card
-            >
-              <GlowCard
-                className={`project-card__surface tone-panel-${project.tone}`}
-                onClick={() => scrollToIndex(index)}
-              >
-                <p className="project-card__status">
-                  <span
-                    className={`project-card__status-dot ${
-                      project.status === "Ongoing" ? "is-live" : "is-complete"
-                    }`}
-                  />
-                  {project.status}
-                </p>
-                <div className="project-card__body">
-                  <div>
-                    <p className="project-card__number">{project.numeral}</p>
-                    <p className="project-card__org">
-                      {project.org} · {project.timeframe}
-                    </p>
-                    <h3 className="project-card__title">{project.title}</h3>
-                  </div>
-                  <p className="project-card__summary">{project.summary}</p>
-                </div>
-              </GlowCard>
-            </article>
-          ))}
-        </div>
-        <div className="carousel-indicators" aria-label="Investigation navigation">
-          {projects.map((project, index) => (
             <button
               key={project.id}
+              id={`chapter-tab-${project.id}`}
               type="button"
-              className={`carousel-indicator ${
+              role="tab"
+              aria-selected={index === activeIndex}
+              aria-controls={`chapter-panel-${project.id}`}
+              className={`chapter-tab chapter-tab--${project.tone} ${
                 index === activeIndex ? "is-active" : ""
               }`}
-              onClick={() => scrollToIndex(index)}
-              aria-label={`View ${project.title}`}
-              aria-current={index === activeIndex}
-            />
+              onClick={() => setActiveIndex(index)}
+            >
+              <span className="chapter-tab__number">{project.numeral}</span>
+              <span className="chapter-tab__meta">
+                <span className="chapter-tab__org">{project.org}</span>
+                <span className="chapter-tab__title">{project.title}</span>
+              </span>
+            </button>
           ))}
         </div>
+
+        {activeProject ? (
+          <GlowCard
+            className={`chapter-panel tone-panel-${activeProject.tone}`}
+            id={`chapter-panel-${activeProject.id}`}
+            role="tabpanel"
+            aria-labelledby={`chapter-tab-${activeProject.id}`}
+          >
+            <div className="chapter-panel__header">
+              <div>
+                <p className="chapter-panel__eyebrow">
+                  {activeProject.org} · {activeProject.timeframe}
+                </p>
+                <h3 className="chapter-panel__title">{activeProject.title}</h3>
+              </div>
+              <p className="chapter-panel__status">
+                <span
+                  className={`chapter-panel__status-dot ${
+                    activeProject.status === "Ongoing" ? "is-live" : "is-complete"
+                  }`}
+                />
+                {activeProject.status}
+              </p>
+            </div>
+            <div className="chapter-panel__grid">
+              <article className="chapter-panel__block">
+                <p className="chapter-panel__label">Question</p>
+                <p>{activeProject.question}</p>
+              </article>
+              <article className="chapter-panel__block">
+                <p className="chapter-panel__label">Approach</p>
+                <p>{activeProject.approach}</p>
+              </article>
+              <article className="chapter-panel__block">
+                <p className="chapter-panel__label">Signal</p>
+                <p>{activeProject.signal}</p>
+              </article>
+              <article className="chapter-panel__block">
+                <p className="chapter-panel__label">Why it matters</p>
+                <p>{activeProject.significance}</p>
+              </article>
+            </div>
+            <div className="chapter-panel__tools">
+              {activeProject.tools.map((tool) => (
+                <span className="chapter-panel__tool" key={tool}>
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </GlowCard>
+        ) : null}
       </Reveal>
     </section>
   );

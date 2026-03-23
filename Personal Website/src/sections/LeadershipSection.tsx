@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { GlowCard } from "../components/GlowCard";
 import { Reveal } from "../components/Reveal";
 import { SectionHeading } from "../components/SectionHeading";
-import type { LeadershipStat } from "../data/siteContent";
+import type { LeadershipOutcome } from "../data/siteContent";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import { useReveal } from "../hooks/useReveal";
 
@@ -11,8 +11,10 @@ interface LeadershipSectionProps {
   headlineValue: number;
   headlinePrefix: string;
   headlineSuffix: string;
+  summary: string;
   role: string;
-  stats: LeadershipStat[];
+  initiatives: string[];
+  outcomes: LeadershipOutcome[];
 }
 
 function useCountUp(target: number, startAnimating: boolean) {
@@ -29,12 +31,12 @@ function useCountUp(target: number, startAnimating: boolean) {
       return undefined;
     }
 
-    const duration = 1800;
+    const duration = 1600;
     const start = performance.now();
 
     const tick = (time: number) => {
       const progress = Math.min((time - start) / duration, 1);
-      const eased = progress === 1 ? 1 : 1 - 2 ** (-10 * progress);
+      const eased = 1 - (1 - progress) * (1 - progress);
       setValue(Math.floor(target * eased));
 
       if (progress < 1) {
@@ -57,7 +59,7 @@ function AnimatedValue({
   prefix = "",
   suffix = "",
   startAnimating,
-}: LeadershipStat & { startAnimating: boolean }) {
+}: LeadershipOutcome & { startAnimating: boolean }) {
   const currentValue = useCountUp(value, startAnimating);
 
   return (
@@ -74,8 +76,10 @@ export function LeadershipSection({
   headlineValue,
   headlinePrefix,
   headlineSuffix,
+  summary,
   role,
-  stats,
+  initiatives,
+  outcomes,
 }: LeadershipSectionProps) {
   const { ref, visible } = useReveal(0.25);
 
@@ -83,19 +87,24 @@ export function LeadershipSection({
     <section
       id="leadership"
       className="page-section section-panel"
-      data-section-label="Leadership"
+      data-section-label="Impact"
       aria-labelledby="leadership-title"
     >
       <div className="section-count" aria-hidden="true">
         04
       </div>
       <SectionHeading
-        kicker="Leadership"
-        title="What I built from nothing"
-        emphasis="from nothing"
+        id="leadership-title"
+        kicker="Impact"
+        title="Operational impact"
       />
-      <Reveal className="leadership-block" delay="short">
-        <GlowCard className="leadership-card">
+      <Reveal as="p" className="section-intro" delay="short">
+        Leadership matters to me when it produces operating reality: mentors
+        recruited, partnerships secured, students supported, and work that
+        becomes easier for other people to do well.
+      </Reveal>
+      <Reveal className="leadership-layout" delay="medium">
+        <GlowCard className="leadership-card leadership-card--summary">
           <div ref={ref as never} className="leadership-card__hero">
             <p className="leadership-card__headline">
               <AnimatedValue
@@ -103,20 +112,33 @@ export function LeadershipSection({
                 prefix={headlinePrefix}
                 suffix={headlineSuffix}
                 label={headlineLabel}
+                context={summary}
                 startAnimating={visible}
               />
             </p>
             <p className="leadership-card__headline-label">{headlineLabel}</p>
           </div>
-          <div className="leadership-card__rows">
-            <div className="leadership-card__row leadership-card__row--title">
-              <span>{role}</span>
-            </div>
-            {stats.map((stat) => (
-              <div className="leadership-card__row" key={stat.label}>
-                <span>{stat.label}</span>
-                <strong>
-                  <AnimatedValue {...stat} startAnimating={visible} />
+          <div className="leadership-summary">
+            <p className="leadership-summary__role">{role}</p>
+            <p className="leadership-summary__body">{summary}</p>
+            <ul className="leadership-summary__list">
+              {initiatives.map((initiative) => (
+                <li key={initiative}>{initiative}</li>
+              ))}
+            </ul>
+          </div>
+        </GlowCard>
+
+        <GlowCard className="leadership-card leadership-card--outcomes">
+          <div className="leadership-outcomes">
+            {outcomes.map((outcome) => (
+              <div className="leadership-outcome" key={outcome.label}>
+                <div>
+                  <p className="leadership-outcome__label">{outcome.label}</p>
+                  <p className="leadership-outcome__context">{outcome.context}</p>
+                </div>
+                <strong className="leadership-outcome__value">
+                  <AnimatedValue {...outcome} startAnimating={visible} />
                 </strong>
               </div>
             ))}
