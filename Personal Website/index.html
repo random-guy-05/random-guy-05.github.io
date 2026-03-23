@@ -362,13 +362,15 @@ a.mag-link:focus-visible {
 /* REVEAL */
 .reveal {
   opacity:0;
-  transform:translateY(45px);
-  transition:opacity 1.2s cubic-bezier(.2,.8,.2,1),transform 1.2s cubic-bezier(.2,.8,.2,1);
+  transform:translateY(60px) scale(0.92);
+  transition:opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), filter 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: blur(15px);
 }
 
 .reveal.in {
   opacity:1;
-  transform:none;
+  transform:translateY(0) scale(1);
+  filter: blur(0);
 }
 
 .d1 {
@@ -613,17 +615,28 @@ a.mag-link:focus-visible {
   flex-direction:column;
   position:relative;
   z-index:1;
+  gap: 2rem;
 }
 
 .codex-entry {
-  border-top:1px solid var(--border);
+  background: rgba(16,14,11,.4);
+  border: 1px solid var(--border);
+  border-radius: 16px;
   display:grid;
-  grid-template-columns:100px 1fr;
-  gap:0 3.5rem;
-  padding:3rem 0;
-  cursor:pointer;
+  grid-template-columns:120px 1fr;
+  gap:0 4rem;
+  padding:3.5rem 4rem;
   position:relative;
   overflow:hidden;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s, border-color 0.5s, background 0.5s;
+  backdrop-filter: blur(12px);
+}
+
+.codex-entry:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border-color: rgba(212,181,91,.3);
+  background: rgba(20,18,14,.7);
 }
 
 .codex-entry:focus-visible {
@@ -631,107 +644,75 @@ a.mag-link:focus-visible {
   outline-offset: 4px;
 }
 
-.codex-entry:last-child {
-  border-bottom:1px solid var(--border);
-}
-
 .codex-entry::before {
   content:'';
   position:absolute;
   left:0;
   top:0;
-  width:2px;
-  height:0;
+  width:4px;
+  height:100%;
   background:var(--gold);
-  transition:height .8s cubic-bezier(.2,.8,.2,1);
+  opacity: 0.3;
+  transition:opacity .5s, box-shadow .5s;
+  border-radius: 16px 0 0 16px;
 }
 
-.codex-entry.open::before,.codex-entry.in::before {
-  height:100%;
+.codex-entry:hover::before {
+  opacity: 1;
+  box-shadow: 0 0 20px var(--gold);
 }
 
 .codex-num {
   font-family:'Playfair Display',serif;
-  font-size:3.5rem;
+  font-size:4.5rem;
   font-style:italic;
-  color:rgba(212,181,91,.3);
+  color:rgba(212,181,91,.4);
   line-height:1;
   padding-top:.15rem;
-  transition:color .4s;
+  transition:color .5s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.codex-entry.open .codex-num {
-  color:rgba(212,181,91,.8);
+.codex-entry:hover .codex-num {
+  transform: scale(1.1) translateX(5px);
+  color:rgba(212,181,91,.9);
 }
 
 .codex-org {
-  font-size:.82rem;
+  font-size:.85rem;
   text-transform:uppercase;
-  letter-spacing:3px;
+  letter-spacing:4px;
   color:var(--gold);
-  margin-bottom:1rem;
+  margin-bottom:1.2rem;
 }
 
 .codex-title {
   font-family:'Playfair Display',serif;
-  font-size:clamp(1.8rem,3.2vw,2.6rem);
+  font-size:clamp(2rem,3.5vw,3rem);
   font-weight:400;
   color:var(--text);
   line-height:1.15;
-  margin-bottom:.8rem;
+  margin-bottom:1rem;
 }
 
 .codex-pull {
   font-style:italic;
-  font-size:1.25rem;
+  font-size:1.35rem;
   color:rgba(212,181,91,.9);
-  margin-bottom:1rem;
+  margin-bottom:1.5rem;
 }
 
 .codex-detail {
-  font-size:1.1rem;
+  font-size:1.15rem;
   color:var(--muted);
-  line-height:1.85;
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .7s cubic-bezier(.2,.8,.2,1),opacity .5s,margin .5s;
-  opacity:0;
-  margin-top:0;
-}
-
-.codex-entry.open .codex-detail {
-  max-height:300px;
-  opacity:1;
-  margin-top:.5rem;
-}
-
-.codex-toggle {
-  position:absolute;
-  right:0;
-  top:3rem;
-  width:32px;
-  height:32px;
-  border:1px solid var(--border);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--gold);
-  font-size:1.4rem;
-  transition:transform .4s,border-color .3s;
-  line-height:1;
-}
-
-.codex-entry.open .codex-toggle {
-  transform:rotate(45deg);
-  border-color:rgba(212,181,91,.6);
+  line-height:1.9;
+  margin-top:1rem;
 }
 
 .codex-stats {
   display:flex;
   align-items:center;
   gap:3rem;
-  margin-top:1.5rem;
+  margin-top:2rem;
   flex-wrap:wrap;
 }
 
@@ -757,19 +738,6 @@ a.mag-link:focus-visible {
   letter-spacing:2px;
   color:var(--muted);
   margin-top:.8rem;
-}
-
-/* BADGE STAMP */
-.badge-stamp {
-  position:absolute;
-  right:4rem;
-  top:50%;
-  transform:translateY(-50%) rotate(-15deg);
-  width:90px;
-  height:90px;
-  opacity:.35;
-  pointer-events:none;
-  z-index:2;
 }
 
 /* PROJECT SLIDER */
@@ -798,6 +766,11 @@ a.mag-link:focus-visible {
   margin-left:-6vw;
   position:relative;
   z-index:1;
+  cursor: grab;
+}
+
+.slider-outer:active {
+  cursor: grabbing;
 }
 
 .slider-scroll {
@@ -805,6 +778,7 @@ a.mag-link:focus-visible {
   padding:1.5rem 6vw 4rem;
   scroll-snap-type:x mandatory;
   overflow-y:visible;
+  scroll-behavior: smooth;
 }
 
 .slider-scroll::-webkit-scrollbar {
@@ -826,6 +800,7 @@ a.mag-link:focus-visible {
   transform:scale(.93) perspective(1000px) rotateY(6deg);
   opacity:.6;
   transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .5s;
+  cursor: pointer;
 }
 
 .proj-card:focus-visible {
@@ -836,6 +811,11 @@ a.mag-link:focus-visible {
 .proj-card.active-card {
   transform:scale(1) perspective(1000px) rotateY(0deg);
   opacity:1;
+}
+
+.proj-card:hover:not(.active-card) {
+  transform:scale(.96) perspective(1000px) rotateY(3deg);
+  opacity:.8;
 }
 
 .proj-card .card-inner {
@@ -1212,10 +1192,6 @@ a.footer-link:focus-visible {
     font-size:5rem;
   }
 
-  .badge-stamp {
-    display:none;
-  }
-
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -1284,7 +1260,7 @@ a.footer-link:focus-visible {
     <h2 class="section-title" data-scramble data-text="Things I've earned" data-scramble-html="Things I've earned">Things I've earned</h2>
     <div class="section-rule"></div></div>
     <div class="codex-list">
-      <div class="codex-entry reveal" tabindex="0" role="button" aria-expanded="false">
+      <div class="codex-entry reveal">
         <div class="codex-num">01</div>
         <div class="codex-body">
           <p class="codex-org">Boy Scouts of America &nbsp;·&nbsp; Class of 2027</p>
@@ -1292,19 +1268,8 @@ a.footer-link:focus-visible {
           <p class="codex-pull">"One of ten in a century."</p>
           <div class="codex-detail">Recognized as one of the 10 youngest Eagle Scouts in the century-long history of the Boy Scouts of America, and the absolute youngest in Troop 539's 100+ year existence. Demonstrated sustained executive leadership, multifaceted skill acquisition, and extensive community infrastructure development.</div>
         </div>
-        <div class="codex-toggle" aria-hidden="true">+</div>
-        <!-- Badge stamp -->
-        <svg class="badge-stamp" viewBox="0 0 100 100" aria-hidden="true">
-          <defs><path id="circ" d="M50,50 m-35,0 a35,35 0 1,1 70,0 a35,35 0 1,1 -70,0"/></defs>
-          <circle cx="50" cy="50" r="44" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
-          <circle cx="50" cy="50" r="36" fill="none" stroke="var(--gold)" stroke-width=".5" stroke-dasharray="3 2"/>
-          <text font-family="'Playfair Display',serif" font-size="10" fill="var(--gold)" letter-spacing="2">
-            <textPath href="#circ">EAGLE SCOUT · BSA · 2027 · CLASS OF</textPath>
-          </text>
-          <text x="50" y="54" text-anchor="middle" font-family="'Playfair Display',serif" font-size="22" fill="var(--gold)" font-style="italic">✧</text>
-        </svg>
       </div>
-      <div class="codex-entry reveal d1" tabindex="0" role="button" aria-expanded="false">
+      <div class="codex-entry reveal d1">
         <div class="codex-num">02</div>
         <div class="codex-body">
           <p class="codex-org">Center for Excellence in Education &nbsp;·&nbsp; 2025</p>
@@ -1312,18 +1277,8 @@ a.footer-link:focus-visible {
           <p class="codex-pull">"Top few percent, nationally."</p>
           <div class="codex-detail">Advanced to the elite national qualifying stage, validating mastery over graduate-level cellular biology, human physiology, genetics, and complex biosystems. Selected from tens of thousands of participants nationwide.</div>
         </div>
-        <div class="codex-toggle" aria-hidden="true">+</div>
-        <svg class="badge-stamp" viewBox="0 0 100 100" aria-hidden="true">
-          <defs><path id="circ2" d="M50,50 m-35,0 a35,35 0 1,1 70,0 a35,35 0 1,1 -70,0"/></defs>
-          <circle cx="50" cy="50" r="44" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
-          <circle cx="50" cy="50" r="36" fill="none" stroke="var(--gold)" stroke-width=".5" stroke-dasharray="3 2"/>
-          <text font-family="'Playfair Display',serif" font-size="9.5" fill="var(--gold)" letter-spacing="1.5">
-            <textPath href="#circ2">USABO · SEMIFINALIST · NATIONAL · 2025</textPath>
-          </text>
-          <text x="50" y="54" text-anchor="middle" font-family="'Playfair Display',serif" font-size="22" fill="var(--gold)" font-style="italic">✦</text>
-        </svg>
       </div>
-      <div class="codex-entry reveal d2" tabindex="0" role="button" aria-expanded="false">
+      <div class="codex-entry reveal d2">
         <div class="codex-num">03</div>
         <div class="codex-body">
           <p class="codex-org">Los Gatos High School &nbsp;·&nbsp; Class of 2028</p>
@@ -1335,7 +1290,6 @@ a.footer-link:focus-visible {
           </div>
           <div class="codex-detail" style="margin-top:1.5rem">AP Calculus BC · AP Biology · AP Chemistry · AP Statistics · MIT OCW: Computation &amp; AI</div>
         </div>
-        <div class="codex-toggle" aria-hidden="true">+</div>
       </div>
     </div>
   </section>
@@ -1611,27 +1565,6 @@ document.querySelectorAll('.proj-card').forEach(c=>{
   c.addEventListener('mouseleave',()=>{b1.style.background=`radial-gradient(circle,${dB1},transparent 68%)`;b3.style.background=`radial-gradient(circle,${dB3},transparent 68%)`;});
 });
 
-// ── Click accordion for codex entries
-document.querySelectorAll('.codex-entry').forEach(entry=>{
-  entry.addEventListener('click',()=>{
-    const wasOpen=entry.classList.contains('open');
-    document.querySelectorAll('.codex-entry.open').forEach(e=>{
-      e.classList.remove('open');
-      e.setAttribute('aria-expanded','false');
-    });
-    if(!wasOpen){
-      entry.classList.add('open');
-      entry.setAttribute('aria-expanded','true');
-    }
-  });
-  entry.addEventListener('keydown',e=>{
-    if(e.key==='Enter'||e.key===' '){
-      e.preventDefault();
-      entry.click();
-    }
-  });
-});
-
 // ── Native Slider setup
 const slider=document.getElementById('projSlider');
 const cards=slider.querySelectorAll('.proj-card');
@@ -1645,6 +1578,41 @@ function updateActive(){
 }
 cards[0].classList.add('active-card');
 slider.addEventListener('scroll', updateActive, {passive:true});
+
+// Click to scroll to card
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    const scrollLeft = card.offsetLeft - (slider.clientWidth / 2) + (card.clientWidth / 2);
+    slider.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+  });
+});
+
+// Drag to scroll
+let isDown = false;
+let startX;
+let scrollLeft;
+
+slider.addEventListener('mousedown', (e) => {
+  isDown = true;
+  slider.classList.add('active');
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+slider.addEventListener('mouseleave', () => {
+  isDown = false;
+  slider.classList.remove('active');
+});
+slider.addEventListener('mouseup', () => {
+  isDown = false;
+  slider.classList.remove('active');
+});
+slider.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 2; // Scroll-fast
+  slider.scrollLeft = scrollLeft - walk;
+});
 
 // ── Clipboard email + toast
 function showToast(message){
