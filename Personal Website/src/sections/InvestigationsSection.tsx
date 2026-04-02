@@ -39,7 +39,7 @@ export function InvestigationsSection({
     <section
       id="investigations"
       className="page-section section-panel"
-      data-section-label="Investigations"
+      data-section-label="Research"
       aria-labelledby="investigations-title"
     >
       <div className="section-count" aria-hidden="true">
