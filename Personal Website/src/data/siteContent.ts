@@ -352,7 +352,7 @@ export const siteContent: SiteContent = {
   },
   contact: {
     email: "arnavmana.me@gmail.com",
-    phoneHref: "tel:+14086561171",
+    phoneHref: "",
     footerEyebrow: "Open to serious research conversations",
     footerTagline:
       "If you lead work in cardiac critical care, clinical AI, or translational biology, I would welcome the opportunity to contribute thoughtfully, learn fast, and do reliable work.",
@@ -363,12 +363,6 @@ export const siteContent: SiteContent = {
         label: "Copy email",
         kind: "copy-email",
         ariaLabel: "Copy email address to clipboard",
-      },
-      {
-        label: "Call",
-        href: "tel:+14086561171",
-        kind: "link",
-        ariaLabel: "Call phone number",
       },
     ],
   },

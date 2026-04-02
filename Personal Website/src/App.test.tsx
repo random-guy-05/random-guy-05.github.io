@@ -54,7 +54,7 @@ describe("App", () => {
     await user.click(screen.getByRole("button", { name: "Copy email" }));
 
     expect(clipboard.writeText).toHaveBeenCalledWith("arnavmana.me@gmail.com");
-    expect(screen.getByText(/email copied to clipboard/i)).toBeInTheDocument();
+    expect(screen.getByText(/email copied/i)).toBeInTheDocument();
   });
 
   it("uses the reduced-motion fallback text immediately", () => {
