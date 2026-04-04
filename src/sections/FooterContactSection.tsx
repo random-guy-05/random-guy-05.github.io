@@ -20,46 +20,48 @@ export function FooterContactSection({
       aria-labelledby="contact-title"
     >
       <div className="footer-contact__glow" aria-hidden="true" />
-      <Reveal as="p" className="footer-contact__eyebrow">
-        {content.footerEyebrow}
-      </Reveal>
-      <Reveal as="h2" className="footer-contact__title" delay="short" id="contact-title">
-        {name}
-      </Reveal>
-      <Reveal as="p" className="footer-contact__tagline" delay="medium">
-        {content.footerTagline}
-      </Reveal>
-      <Reveal as="p" className="footer-contact__note" delay="medium">
-        {content.footerNote}
-      </Reveal>
-      <Reveal className="footer-contact__actions" delay="long">
-        {content.actions.map((action) => {
-          if (action.kind === "copy-email") {
+      <div className="footer-contact__inner">
+        <Reveal as="p" className="footer-contact__eyebrow">
+          {content.footerEyebrow}
+        </Reveal>
+        <Reveal as="h2" className="footer-contact__title" delay="short" id="contact-title">
+          {name}
+        </Reveal>
+        <Reveal as="p" className="footer-contact__tagline" delay="medium">
+          {content.footerTagline}
+        </Reveal>
+        <Reveal as="p" className="footer-contact__note" delay="medium">
+          {content.footerNote}
+        </Reveal>
+        <Reveal className="footer-contact__actions" delay="long">
+          {content.actions.map((action) => {
+            if (action.kind === "copy-email") {
+              return (
+                <button
+                  className="footer-link"
+                  key={action.label}
+                  type="button"
+                  onClick={onCopyEmail}
+                  aria-label={action.ariaLabel}
+                >
+                  {content.email}
+                </button>
+              );
+            }
+
             return (
-              <button
+              <a
                 className="footer-link"
                 key={action.label}
-                type="button"
-                onClick={onCopyEmail}
+                href={action.href}
                 aria-label={action.ariaLabel}
               >
-                {content.email}
-              </button>
+                {action.label}
+              </a>
             );
-          }
-
-          return (
-            <a
-              className="footer-link"
-              key={action.label}
-              href={action.href}
-              aria-label={action.ariaLabel}
-            >
-              {action.label}
-            </a>
-          );
-        })}
-      </Reveal>
+          })}
+        </Reveal>
+      </div>
     </footer>
   );
 }

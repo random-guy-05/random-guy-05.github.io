@@ -28,6 +28,8 @@
   --space-6: 3.2rem;
   --gutter: clamp(1rem, 3.4vw, 3rem);
   --content-max: 76rem;
+  --section-max: 70rem;
+  --grid-gap: clamp(1rem, 1.6vw, 1.4rem);
   --section-gap-top: clamp(3rem, 7.5vh, 5rem);
   --section-gap-bottom: clamp(3rem, 7vh, 4.5rem);
   --card-padding: clamp(1rem, 1.4vw, 1.5rem);
@@ -224,16 +226,21 @@ button {
   position: fixed;
   inset: 0 0 auto;
   z-index: 30;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem;
-  min-height: var(--nav-height);
-  padding: 1.1rem var(--gutter);
+  padding: 0 var(--gutter);
   background: linear-gradient(180deg, rgba(9, 8, 7, 0.92), rgba(9, 8, 7, 0.18));
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   transition: transform 280ms ease, opacity 280ms ease;
+}
+
+.top-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: min(100%, var(--content-max));
+  min-height: var(--nav-height);
+  margin: 0 auto;
 }
 
 .top-nav.is-hidden {
@@ -384,7 +391,7 @@ button {
   grid-template-columns: minmax(0, 1fr);
   gap: var(--space-4);
   align-items: start;
-  width: min(100%, 64rem);
+  width: min(100%, var(--section-max));
   margin: 0 auto;
 }
 
@@ -669,9 +676,18 @@ button {
 }
 
 .section-panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  align-content: start;
+}
+
+.section-panel > .section-heading,
+.section-panel > .section-intro,
+.section-panel > .recognition-grid,
+.section-panel > .investigations-layout,
+.section-panel > .capability-grid,
+.section-panel > .leadership-layout {
+  width: min(100%, var(--section-max));
+  margin-inline: auto;
 }
 
 .section-count {
@@ -736,7 +752,7 @@ button {
 .recognition-grid,
 .capability-grid {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--grid-gap);
   margin-top: var(--space-5);
 }
 
@@ -828,7 +844,7 @@ button {
 .investigations-layout {
   display: grid;
   grid-template-columns: minmax(16rem, 0.84fr) minmax(0, 1.16fr);
-  gap: var(--space-4);
+  gap: var(--grid-gap);
   margin-top: var(--space-5);
   align-items: start;
   width: 100%;
@@ -1086,7 +1102,7 @@ button {
 .leadership-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: var(--space-3);
+  gap: var(--grid-gap);
   margin-top: var(--space-5);
 }
 
@@ -1182,6 +1198,13 @@ button {
   padding: clamp(3rem, 6vh, 4.5rem) var(--gutter) clamp(3.4rem, 6vh, 5.4rem);
   border-top: 1px solid var(--line);
   text-align: center;
+}
+
+.footer-contact__inner {
+  position: relative;
+  z-index: 1;
+  width: min(100%, var(--content-max));
+  margin: 0 auto;
 }
 
 .footer-contact__glow {
