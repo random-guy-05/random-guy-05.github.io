@@ -30,6 +30,7 @@ export function ECGPreview({
 
     const path = svg.querySelector("path");
     if (!(path instanceof SVGPathElement)) return undefined;
+    const pathEl = path;
 
     const start = performance.now();
 
@@ -56,7 +57,7 @@ export function ECGPreview({
         const y = height / 2 - ecgAt(x, t) * (height * 0.4);
         d += i === 0 ? `M ${x},${y}` : ` L ${x},${y}`;
       }
-      path.setAttribute("d", d);
+      pathEl.setAttribute("d", d);
       rafRef.current = requestAnimationFrame(render);
     }
 
