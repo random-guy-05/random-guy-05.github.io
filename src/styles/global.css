@@ -1341,9 +1341,6 @@ button {
     scroll-behavior: auto !important;
   }
   
-  .scroll-fade-in,
-  .scroll-slide-up,
-  .scroll-scale-in,
   .background-blob,
   .hero-glow,
   .status-pill__dot,
