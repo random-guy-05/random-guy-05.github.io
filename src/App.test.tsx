@@ -32,7 +32,7 @@ describe("App", () => {
       screen.getByRole("heading", { name: /signals of rigor/i, level: 2 }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /active investigations/i, level: 2 }),
+      screen.getByRole("heading", { name: /research projects/i, level: 2 }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("heading", { name: /leadership with results/i, level: 2 }),
@@ -57,17 +57,17 @@ describe("App", () => {
     expect(screen.getByText(/email copied/i)).toBeInTheDocument();
   });
 
-  it("uses the reduced-motion fallback text immediately", () => {
+  it("renders hero summary copy", () => {
     render(<App />);
 
     expect(
       screen.getByText(
-        "Forecasting cardiogenic shock before deterioration becomes obvious.",
+        /my work sits at the intersection of computational biology, translational cardiology, and clinical ai/i,
       ),
     ).toBeInTheDocument();
   });
 
-  it("updates the active research chapter when a new tab is selected", async () => {
+  it("updates the active research project when a new tab is selected", async () => {
     const user = userEvent.setup();
 
     render(<App />);

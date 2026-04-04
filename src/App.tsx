@@ -10,7 +10,6 @@ import { useActiveSection } from "./hooks/useActiveSection";
 import { useCopyToClipboard } from "./hooks/useCopyToClipboard";
 import { usePrefersReducedMotion } from "./hooks/usePrefersReducedMotion";
 import { useScrollSignals } from "./hooks/useScrollSignals";
-import { useTypewriter } from "./hooks/useTypewriter";
 import { FooterContactSection } from "./sections/FooterContactSection";
 import { HeroSection } from "./sections/HeroSection";
 import { InvestigationsSection } from "./sections/InvestigationsSection";
@@ -31,7 +30,6 @@ export default function App() {
   const prefersReducedMotion = usePrefersReducedMotion();
   const { progress, navHidden } = useScrollSignals();
   const activeSection = useActiveSection([...sectionIds]);
-  const typedText = useTypewriter(siteContent.heroPhrases, prefersReducedMotion);
   const { copied, copy, clear } = useCopyToClipboard();
   const [activeTone, setActiveTone] = useState(siteContent.projects[0]?.tone ?? "gold");
   const [pageEntered, setPageEntered] = useState(false);
@@ -92,8 +90,7 @@ export default function App() {
         onCopyEmail={handleCopyEmail}
       />
       <main className={`page-shell${pageEntered ? " in-view" : ""}`}>
-        <HeroSection content={siteContent} typedText={typedText} />
-        <div id="ecg-interactive-placeholder" aria-hidden="true" />
+        <HeroSection content={siteContent} />
         <RecognitionSection items={siteContent.recognition} />
         <InvestigationsSection
           projects={siteContent.projects}

@@ -48,17 +48,17 @@ export function InvestigationsSection({
       <SectionHeading
         id="investigations-title"
         kicker="Research"
-        title="Active investigations"
+        title="Research projects"
       />
       <Reveal as="p" className="section-intro" delay="short">
-        Each chapter states the question, method, signal, and why the work
+        Each project states the question, method, signal, and why the work
         matters.
       </Reveal>
       <Reveal className="investigations-layout" delay="medium">
         <div
           className="chapter-rail"
           role="tablist"
-          aria-label="Research investigation chapters"
+          aria-label="Research projects"
           onKeyDown={(event) => {
             if (event.key === "ArrowDown" || event.key === "ArrowRight") {
               event.preventDefault();

@@ -185,7 +185,7 @@ export const siteContent: SiteContent = {
   projects: [
     {
       id: "lactate-architecture",
-      numeral: "Chapter I",
+      numeral: "01",
       org: "UCSF Cardiac Critical Care",
       timeframe: "Aug 2025 - Present",
       title: "Forecasting Lactate in Cardiogenic Shock",
@@ -203,7 +203,7 @@ export const siteContent: SiteContent = {
     },
     {
       id: "hlhs-axis",
-      numeral: "Chapter II",
+      numeral: "02",
       org: "CU Anschutz School of Medicine",
       timeframe: "May 2024 - Present",
       title: "Glycosphingolipid-Cytokine Axis in HLHS",
@@ -221,7 +221,7 @@ export const siteContent: SiteContent = {
     },
     {
       id: "physiograph",
-      numeral: "Chapter III",
+      numeral: "03",
       org: "Computational Cardiology",
       timeframe: "Aug 2025 - Present",
       title: "Latent Shock Topologies with GATv2",
@@ -239,7 +239,7 @@ export const siteContent: SiteContent = {
     },
     {
       id: "hypoxia-shield",
-      numeral: "Chapter IV",
+      numeral: "04",
       org: "Clinical Outcomes Analysis",
       timeframe: "Aug 2025 - Present",
       title: "Chronic Intermittent Hypoxia and the Metabolic Shield",
@@ -257,7 +257,7 @@ export const siteContent: SiteContent = {
     },
     {
       id: "cytokine-cad",
-      numeral: "Chapter V",
+      numeral: "05",
       org: "Pathophysiology Review",
       timeframe: "Mar 2024 - Nov 2025",
       title: "Cytokine Networks in Coronary Artery Disease",
