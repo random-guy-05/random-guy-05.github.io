@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 export function useReveal(threshold = 0.2) {
   const ref = useRef<HTMLElement | null>(null);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
@@ -30,7 +30,7 @@ export function useReveal(threshold = 0.2) {
       },
       {
         threshold,
-        rootMargin: "0px 0px -40px 0px",
+        rootMargin: "0px 0px -80px 0px",
       },
     );
 
