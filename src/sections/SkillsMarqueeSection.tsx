@@ -21,12 +21,12 @@ export function SkillsMarqueeSection({ rows }: SkillsMarqueeSectionProps) {
       <SectionHeading
         id="capabilities-title"
         kicker="Capabilities"
-        title="How I contribute"
+        title="Where I add value"
       />
       <Reveal as="p" className="section-intro" delay="short">
-        I try to be useful across the full arc of a project: framing the question,
-        doing the analysis, grounding it in biology, and helping the work move
-        forward with other people.
+        I contribute across the full arc of a project: framing the question,
+        doing the analysis, grounding it in biology, and moving the work forward
+        with other people.
       </Reveal>
       <div className="capability-grid">
         {rows.map((row, index) => (

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BackgroundBlobs } from "./components/BackgroundBlobs";
 import { Particles } from "./components/Particles";
+import { PasswordGate } from "./components/PasswordGate";
 import { ProgressBar } from "./components/ProgressBar";
 import { Toast } from "./components/Toast";
 import { TopNav } from "./components/TopNav";
@@ -34,6 +35,7 @@ export default function App() {
   const { copied, copy, clear } = useCopyToClipboard();
   const [activeTone, setActiveTone] = useState(siteContent.projects[0]?.tone ?? "gold");
   const [pageEntered, setPageEntered] = useState(false);
+  const [unlocked, setUnlocked] = useState(() => sessionStorage.getItem("pg_auth") === "1");
 
   useEffect(() => {
     if (!copied) {
@@ -76,7 +78,9 @@ export default function App() {
   }, [prefersReducedMotion]);
 
   return (
-    <div className="app-shell" data-reduced-motion={prefersReducedMotion}>
+    <>
+      {!unlocked && <PasswordGate onUnlocked={() => setUnlocked(true)} />}
+      <div className="app-shell" data-reduced-motion={prefersReducedMotion}>
       <ProgressBar progress={progress} />
       <BackgroundBlobs tone={activeTone} />
       <Particles />
@@ -118,5 +122,6 @@ export default function App() {
         onCopyEmail={handleCopyEmail}
       />
     </div>
+    </>
   );
 }

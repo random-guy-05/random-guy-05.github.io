@@ -16,7 +16,7 @@ export function FooterContactSection({
     <footer
       id="contact"
       className="footer-contact"
-      data-section-label=""
+      data-section-label="Contact"
       aria-labelledby="contact-title"
     >
       <div className="footer-contact__glow" aria-hidden="true" />

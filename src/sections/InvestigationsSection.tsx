@@ -48,12 +48,11 @@ export function InvestigationsSection({
       <SectionHeading
         id="investigations-title"
         kicker="Research"
-        title="Selected investigations"
+        title="Active investigations"
       />
       <Reveal as="p" className="section-intro" delay="short">
-        Instead of a project carousel, this section is organized like a compact
-        research dossier. Each chapter describes the question, method, signal,
-        and why the work matters.
+        Each chapter states the question, method, signal, and why the work
+        matters.
       </Reveal>
       <Reveal className="investigations-layout" delay="medium">
         <div

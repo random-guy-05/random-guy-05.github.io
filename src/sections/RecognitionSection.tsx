@@ -21,12 +21,11 @@ export function RecognitionSection({ items }: RecognitionSectionProps) {
       <SectionHeading
         id="recognition-title"
         kicker="Evidence"
-        title="Evidence of rigor"
+        title="Signals of rigor"
       />
       <Reveal as="p" className="section-intro" delay="short">
-        I want the site to show how I work, not just what I have accumulated.
-        These are the strongest signals of scientific range, execution discipline,
-        and readiness to contribute in serious environments.
+        These are the clearest signals of scientific range, execution discipline,
+        and follow-through.
       </Reveal>
       <div className="recognition-grid">
         {items.map((item, index) => (

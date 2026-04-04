@@ -100,41 +100,41 @@ export interface SiteContent {
 }
 
 export const siteContent: SiteContent = {
-  seoTitle: "Arnav Mana | Clinical AI Researcher",
+  seoTitle: "Arnav Mana | Clinical AI Researcher in Cardiac Critical Care",
   name: "Arnav Mana",
   eyebrow: "Clinical AI Researcher | Computational Biology | Cardiac Critical Care",
-  tagline: "Building clinically grounded prediction systems for earlier intervention in high-risk cardiac care.",
-  bio: "My work sits at the intersection of computational biology, translational cardiology, and clinical AI. I am interested in how physiological and molecular signals can be modeled with enough discipline to improve early recognition, sharpen mechanistic hypotheses, and support more timely decision-making in acute care.",
+  tagline: "Building clinically grounded prediction systems and translational biology models for earlier intervention in high-risk cardiac care.",
+  bio: "My work sits at the intersection of computational biology, translational cardiology, and clinical AI. I build models that connect physiological and molecular signals to mechanism, earlier recognition, and better bedside decisions.",
   thesis:
-    "The most useful research questions in medicine are rarely only computational or only biological. I try to work where the model, the mechanism, and the clinical consequence need to be understood together.",
+    "The strongest questions in medicine do not split computation from biology. I work where model, mechanism, and clinical consequence have to hold together.",
   collaboratorNote:
-    "I am especially drawn to mentors and teams working on cardiac critical care, translational biology, and clinically meaningful prediction problems where rigor matters more than novelty theatre.",
+    "I look for mentors and teams tackling cardiac critical care, translational biology, and predictive modeling where rigor matters more than novelty.",
   heroFacts: [
     {
-      label: "Current lane",
-      value: "Cardiac critical care + translational modeling",
-      note: "Focusing on problems where earlier signal detection can change intervention timing.",
+      label: "Current focus",
+      value: "Cardiac critical care and translational modeling",
+      note: "Focused on problems where earlier signal detection can change intervention timing.",
     },
     {
       label: "Working modes",
-      value: "Prediction, literature synthesis, wet-lab collaboration",
-      note: "Comfortable moving between technical analysis, scientific framing, and experimental context.",
+      value: "Modeling, literature synthesis, wet-lab collaboration",
+      note: "Comfortable moving between analysis, scientific framing, and experimental context.",
     },
     {
       label: "Looking for",
       value: "Rigorous mentors and clinically meaningful problems",
-      note: "Most interested in environments where careful reasoning and execution are expected.",
+      note: "Best fit is a setting where careful reasoning and execution are expected.",
     },
   ],
   heroHighlights: [
-    { label: "Selected investigations", value: "5 active research threads" },
-    { label: "Primary domains", value: "Shock prediction, HLHS biology, CAD inflammation" },
-    { label: "Operating style", value: "Structured, fast-learning, execution-focused" },
+    { label: "Selected investigations", value: "5 live research threads" },
+    { label: "Primary domains", value: "Shock prediction, HLHS signaling, CAD inflammation" },
+    { label: "Operating style", value: "Structured, fast-moving, execution-focused" },
   ],
   heroPhrases: [
-    "Modeling early deterioration in cardiogenic shock.",
-    "Connecting physiological signal structure to bedside intervention windows.",
-    "Studying inflammatory and glycosphingolipid pathways in cardiac disease.",
+    "Forecasting cardiogenic shock before deterioration becomes obvious.",
+    "Linking physiologic signal structure to earlier bedside action.",
+    "Tracing inflammatory and glycosphingolipid pathways in cardiac disease.",
     "Building research habits that hold up under clinical scrutiny.",
   ],
   recognition: [
@@ -143,13 +143,12 @@ export const siteContent: SiteContent = {
       number: "01",
       category: "Long-horizon execution",
       title: "Eagle Scout",
-      framing:
-        "A durable signal of follow-through, planning discipline, and leadership over time.",
+      framing: "A durable signal of planning discipline, follow-through, and leadership.",
       detail:
-        "This distinction reflects more than a single milestone. It captures repeated delivery, community accountability, and the ability to carry work from idea to execution in environments that require consistency rather than short bursts of performance.",
+        "This distinction reflects repeated delivery, community accountability, and the ability to carry complex work from idea to execution.",
       evidence: [
         "Built a track record of planning, coordinating, and finishing complex work.",
-        "Demonstrated sustained leadership rather than isolated achievement.",
+        "Demonstrated sustained leadership rather than one-off achievement.",
       ],
     },
     {
@@ -157,10 +156,9 @@ export const siteContent: SiteContent = {
       number: "02",
       category: "Scientific fluency",
       title: "USA Biology Olympiad Semifinalist",
-      framing:
-        "Evidence of advanced bioscience reasoning under competitive national standards.",
+      framing: "Evidence of advanced bioscience reasoning under national competition standards.",
       detail:
-        "Advancing to the semifinal stage required strong command of cellular biology, genetics, physiology, and systems-level reasoning, along with the ability to work quickly through unfamiliar scientific problems.",
+        "Advancing to the semifinal stage required command of cellular biology, genetics, physiology, and systems-level reasoning, plus the ability to solve unfamiliar problems quickly.",
       evidence: [
         "Comfort with advanced biology content beyond routine coursework.",
         "Strong performance in high-pressure analytical settings.",
@@ -171,10 +169,9 @@ export const siteContent: SiteContent = {
       number: "03",
       category: "Quantitative foundation",
       title: "Academic record with range",
-      framing:
-        "A strong baseline in quantitative work, scientific coursework, and independent technical study.",
+      framing: "A strong baseline in quantitative work, scientific coursework, and independent technical study.",
       detail:
-        "I treat academic performance as supporting evidence rather than the headline. It matters because it shows consistency, but it is most valuable when paired with real research judgment and execution.",
+        "I treat academic performance as supporting evidence. It matters because it shows consistency, but it is strongest when paired with real research judgment and execution.",
       evidence: [
         "Coursework spanning calculus, biology, chemistry, and statistics.",
         "Independent exposure to computation and AI through MIT OpenCourseWare.",
@@ -191,17 +188,17 @@ export const siteContent: SiteContent = {
       numeral: "Chapter I",
       org: "UCSF Cardiac Critical Care",
       timeframe: "Aug 2025 - Present",
-      title: "Redefining the Predictive Architecture of Lactate",
+      title: "Forecasting Lactate in Cardiogenic Shock",
       status: "Ongoing",
       tone: "gold",
       question:
         "Can lactate become an earlier and more interpretable warning signal for shock progression rather than a late reaction marker?",
       approach:
-        "Model interactions among hemodynamic modifiers and SHARC phenotypes to understand how lactate behaves across evolving cardiac failure states, with emphasis on prediction rather than retrospective description.",
+        "Model how hemodynamic modifiers and SHARC phenotypes shape lactate across evolving cardiac failure states, with emphasis on prediction rather than retrospective description.",
       signal:
-        "The work is aimed at isolating combinations of physiologic features that become informative before overt decompensation is clinically obvious.",
+        "The work is aimed at isolating physiologic feature combinations that become informative before overt decompensation is clinically obvious.",
       significance:
-        "If successful, this reframes lactate from a generic severity marker into a more precise forecasting signal for the STEMI-to-heart-failure-shock transition.",
+        "If successful, this turns lactate from a generic severity marker into a more precise forecasting signal for the STEMI-to-heart-failure-shock transition.",
       tools: ["Python", "PyTorch", "High-dimensional physiology", "Network analysis"],
     },
     {
@@ -227,7 +224,7 @@ export const siteContent: SiteContent = {
       numeral: "Chapter III",
       org: "Computational Cardiology",
       timeframe: "Aug 2025 - Present",
-      title: "Latent Topologies of Cardiogenic Shock via GATv2",
+      title: "Latent Shock Topologies with GATv2",
       status: "Ongoing",
       tone: "indigo",
       question:
@@ -282,7 +279,7 @@ export const siteContent: SiteContent = {
       id: "computation",
       title: "Computation and modeling",
       description:
-        "I use modeling as a way to ask better clinical questions, not just to optimize metrics in isolation.",
+        "I use modeling to sharpen clinical questions, not just to optimize metrics in isolation.",
       items: ["Python", "PyTorch", "Graph learning", "Time-series modeling", "Feature interpretation"],
       tone: "gold",
     },
@@ -290,7 +287,7 @@ export const siteContent: SiteContent = {
       id: "analysis",
       title: "Quantitative analysis",
       description:
-        "Comfortable with observational data, study design logic, and statistical workflows that need to stand up to scrutiny.",
+        "I work comfortably with observational data, study design, and statistical workflows that need to stand up to scrutiny.",
       items: ["R", "SQL", "Mixed-effects models", "IPTW", "Cohort analysis"],
       tone: "slate",
     },
@@ -298,7 +295,7 @@ export const siteContent: SiteContent = {
       id: "biology",
       title: "Experimental and translational biology",
       description:
-        "I value the ability to connect computational outputs back to biological mechanism and experimental reality.",
+        "I connect computational outputs back to biological mechanism and experimental reality.",
       items: ["RT-qPCR", "ELISA", "Gel electrophoresis", "PAGE", "Molecular pathway reasoning"],
       tone: "forest",
     },
@@ -306,7 +303,7 @@ export const siteContent: SiteContent = {
       id: "execution",
       title: "Execution and communication",
       description:
-        "Strong research work also depends on operating rhythm, written clarity, and the ability to move projects forward with other people.",
+        "Strong research also depends on operating rhythm, written clarity, and moving work forward with other people.",
       items: ["Scientific writing", "Literature synthesis", "Partner outreach", "Mentor coordination", "Project delivery"],
       tone: "indigo",
     },
@@ -315,49 +312,49 @@ export const siteContent: SiteContent = {
     headlineValue: 100000,
     headlinePrefix: "$",
     headlineSuffix: "+",
-    headlineLabel: "mobilized across sponsorships, prize support, and operating resources for Hack4Health",
-    summary:
-      "I helped build Hack4Health from an idea into a partner-backed initiative that connected students, mentors, and operators around applied health and AI work.",
-    role: "Hack4Health · Co-Founder and Co-President",
-    initiatives: [
-      "Built an external partner network rather than relying on internal school momentum alone.",
-      "Created structures that made ambitious projects easier for other students to enter and finish.",
-      "Focused on operational follow-through: outreach, sponsorship, mentor recruitment, and event execution.",
-    ],
+      headlineLabel: "mobilized across sponsorships, prize support, and operating resources for Hack4Health",
+      summary:
+        "I helped turn Hack4Health from an idea into a partner-backed initiative connecting students, mentors, and operators around applied health AI.",
+      role: "Hack4Health · Co-Founder and Co-President",
+      initiatives: [
+        "Built an external partner network instead of depending on school momentum alone.",
+        "Created structures that made ambitious projects easier to start and finish.",
+        "Turned outreach, sponsorship, mentor recruitment, and event execution into repeatable operating work.",
+      ],
     outcomes: [
       {
         label: "Participants engaged across AI4Alzheimers",
         value: 1470,
-        context: "Evidence that the program was able to attract real interest and sustained participation at scale.",
+        context: "Showed the program could attract and keep real participation at scale.",
       },
       {
         label: "Corporate partners secured",
         value: 20,
         suffix: "+",
-        context: "Partnership development required repeated outreach, credibility building, and operational clarity.",
+        context: "Repeated outreach and credibility-building turned into actual partner support.",
       },
       {
         label: "Research mentors recruited",
         value: 20,
-        context: "Built a stronger intellectual environment by bringing in mentors with substantial publication experience.",
+        context: "Built a stronger environment by recruiting mentors with significant publication experience.",
       },
       {
         label: "Annual Coder.com fiscal agreement",
         value: 3,
         prefix: "$",
         suffix: "K/yr",
-        context: "A concrete example of turning relationship-building into stable operating support.",
+        context: "A concrete example of turning relationships into stable operating support.",
       },
     ],
   },
   contact: {
     email: "arnavmana.me@gmail.com",
     phoneHref: "",
-    footerEyebrow: "Open to serious research conversations",
-    footerTagline:
-      "If you lead work in cardiac critical care, clinical AI, or translational biology, I would welcome the opportunity to contribute thoughtfully, learn fast, and do reliable work.",
-    footerNote:
-      "Email is the best starting point. I am most useful in environments that value rigor, clear feedback, and clinically meaningful questions.",
+      footerEyebrow: "Open to rigorous research collaborations",
+      footerTagline:
+        "If you lead work in cardiac critical care, clinical AI, or translational biology, I would welcome the chance to contribute with rigor, speed, and judgment.",
+      footerNote:
+        "Email is the best starting point. I work best in environments that value clear feedback, high standards, and clinically meaningful questions.",
     actions: [
       {
         label: "Copy email",

@@ -96,12 +96,12 @@ export function LeadershipSection({
       <SectionHeading
         id="leadership-title"
         kicker="Impact"
-        title="Operational impact"
+        title="Leadership with results"
       />
       <Reveal as="p" className="section-intro" delay="short">
-        Leadership matters to me when it produces operating reality: mentors
-        recruited, partnerships secured, students supported, and work that
-        becomes easier for other people to do well.
+        Leadership matters when it produces results: mentors recruited,
+        partnerships secured, students supported, and work that becomes easier
+        for other people to do well.
       </Reveal>
       <Reveal className="leadership-layout" delay="medium">
         <GlowCard className="leadership-card leadership-card--summary">

@@ -29,13 +29,13 @@ describe("App", () => {
       screen.getByRole("heading", { name: /arnav mana/i, level: 1 }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /evidence of rigor/i, level: 2 }),
+      screen.getByRole("heading", { name: /signals of rigor/i, level: 2 }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /selected investigations/i, level: 2 }),
+      screen.getByRole("heading", { name: /active investigations/i, level: 2 }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /operational impact/i, level: 2 }),
+      screen.getByRole("heading", { name: /leadership with results/i, level: 2 }),
     ).toBeInTheDocument();
   });
 
@@ -61,7 +61,9 @@ describe("App", () => {
     render(<App />);
 
     expect(
-      screen.getByText("Modeling early deterioration in cardiogenic shock."),
+      screen.getByText(
+        "Forecasting cardiogenic shock before deterioration becomes obvious.",
+      ),
     ).toBeInTheDocument();
   });
 
