@@ -33,6 +33,7 @@ export default function App() {
   const typedText = useTypewriter(siteContent.heroPhrases, prefersReducedMotion);
   const { copied, copy, clear } = useCopyToClipboard();
   const [activeTone, setActiveTone] = useState(siteContent.projects[0]?.tone ?? "gold");
+  const [pageEntered, setPageEntered] = useState(false);
 
   useEffect(() => {
     if (!copied) {
@@ -53,6 +54,27 @@ export default function App() {
     document.title = siteContent.seoTitle;
   }, []);
 
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setPageEntered(true);
+      return undefined;
+    }
+
+    let timeoutId: number | undefined;
+    const rafId = window.requestAnimationFrame(() => {
+      timeoutId = window.setTimeout(() => {
+        setPageEntered(true);
+      }, 60);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      if (timeoutId !== undefined) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, [prefersReducedMotion]);
+
   return (
     <div className="app-shell" data-reduced-motion={prefersReducedMotion}>
       <ProgressBar progress={progress} />
@@ -65,7 +87,7 @@ export default function App() {
         hidden={navHidden}
         onCopyEmail={handleCopyEmail}
       />
-      <main className="page-shell">
+      <main className={`page-shell${pageEntered ? " in-view" : ""}`}>
         <HeroSection content={siteContent} typedText={typedText} />
         <div id="ecg-interactive-placeholder" aria-hidden="true" />
         <RecognitionSection items={siteContent.recognition} />
