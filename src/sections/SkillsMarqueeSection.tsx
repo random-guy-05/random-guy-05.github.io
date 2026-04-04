@@ -24,9 +24,8 @@ export function SkillsMarqueeSection({ rows }: SkillsMarqueeSectionProps) {
         title="Where I add value"
       />
       <Reveal as="p" className="section-intro" delay="short">
-        I contribute across the full arc of a project: framing the question,
-        doing the analysis, grounding it in biology, and moving the work forward
-        with other people.
+        I contribute across the full project lifecycle, from problem framing and
+        analysis to biological grounding and cross-functional execution.
       </Reveal>
       <div className="capability-grid">
         {rows.map((row, index) => (

@@ -51,8 +51,8 @@ export function InvestigationsSection({
         title="Research projects"
       />
       <Reveal as="p" className="section-intro" delay="short">
-        Each project states the question, method, signal, and why the work
-        matters.
+        Each project is structured around a clear question, approach, signal,
+        and clinical relevance.
       </Reveal>
       <Reveal className="investigations-layout" delay="medium">
         <div

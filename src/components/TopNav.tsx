@@ -12,7 +12,7 @@ export function TopNav({ name, activeSection, hidden, onCopyEmail }: TopNavProps
       <div className="top-nav__meta">
         <div className="status-pill">
           <span className="status-pill__dot" />
-          <span>Open to research collaboration</span>
+          <span>Open to research opportunities</span>
         </div>
         <p className="top-nav__section" aria-live="polite">
           {activeSection ? `→ ${activeSection}` : ""}

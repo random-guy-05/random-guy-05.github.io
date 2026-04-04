@@ -24,8 +24,8 @@ export function RecognitionSection({ items }: RecognitionSectionProps) {
         title="Signals of rigor"
       />
       <Reveal as="p" className="section-intro" delay="short">
-        These are the clearest signals of scientific range, execution discipline,
-        and follow-through.
+        These credentials and outcomes reflect technical rigor, dependable execution,
+        and sustained follow-through.
       </Reveal>
       <div className="recognition-grid">
         {items.map((item, index) => (

@@ -20,6 +20,17 @@
   --radius-xl: 32px;
   --radius-lg: 24px;
   --radius-md: 18px;
+  --space-1: 0.55rem;
+  --space-2: 0.9rem;
+  --space-3: 1.2rem;
+  --space-4: 1.6rem;
+  --space-5: 2.2rem;
+  --space-6: 3.2rem;
+  --gutter: clamp(1rem, 3.4vw, 3rem);
+  --content-max: 76rem;
+  --section-gap-top: clamp(3rem, 7.5vh, 5rem);
+  --section-gap-bottom: clamp(3rem, 7vh, 4.5rem);
+  --card-padding: clamp(1rem, 1.4vw, 1.5rem);
   --nav-height: 90px;
 }
 
@@ -77,7 +88,17 @@ button {
 .page-shell {
   position: relative;
   z-index: 1;
-  padding: 0 5vw 4rem;
+  width: min(100%, var(--content-max));
+  margin: 0 auto;
+  padding: 0 var(--gutter) 4rem;
+}
+
+.page-shell > *,
+.investigations-layout > *,
+.recognition-grid > *,
+.capability-grid > *,
+.leadership-layout > * {
+  min-width: 0;
 }
 
 .progress-shell {
@@ -208,7 +229,7 @@ button {
   justify-content: space-between;
   gap: 1.25rem;
   min-height: var(--nav-height);
-  padding: 1.35rem 5vw;
+  padding: 1.1rem var(--gutter);
   background: linear-gradient(180deg, rgba(9, 8, 7, 0.92), rgba(9, 8, 7, 0.18));
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -240,6 +261,9 @@ button {
   display: flex;
   align-items: center;
   gap: 1.1rem;
+  min-width: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .status-pill {
@@ -271,6 +295,7 @@ button {
   color: var(--muted);
   font-size: 0.86rem;
   font-style: italic;
+  white-space: nowrap;
 }
 
 .nav-link,
@@ -324,18 +349,19 @@ button {
 
 .page-section {
   position: relative;
+  scroll-margin-top: calc(var(--nav-height) + 1rem);
 }
 
 .section-panel {
-  min-height: 100vh;
-  padding-top: calc(var(--nav-height) + 4rem);
-  padding-bottom: 5rem;
+  min-height: auto;
+  padding-top: calc(var(--nav-height) + var(--section-gap-top));
+  padding-bottom: var(--section-gap-bottom);
 }
 
 .hero-section {
   min-height: calc(100svh - var(--nav-height));
-  padding-top: calc(var(--nav-height) + 2.2rem);
-  padding-bottom: 2.2rem;
+  padding-top: calc(var(--nav-height) + clamp(1.5rem, 4vh, 2.4rem));
+  padding-bottom: clamp(1.8rem, 3.6vh, 2.6rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -356,9 +382,9 @@ button {
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 0;
+  gap: var(--space-4);
   align-items: start;
-  width: min(100%, 56rem);
+  width: min(100%, 64rem);
   margin: 0 auto;
 }
 
@@ -369,7 +395,8 @@ button {
 }
 
 .hero-copy {
-  max-width: 52rem;
+  max-width: 58rem;
+  min-width: 0;
 }
 
 .hero-eyebrow,
@@ -392,11 +419,12 @@ button {
 .hero-title {
   display: grid;
   margin: 0.6rem 0 0;
-  font-size: clamp(3.8rem, 11vw, 7.2rem);
-  line-height: 0.88;
+  font-size: clamp(3.2rem, 9.5vw, 6.2rem);
+  line-height: 0.92;
   letter-spacing: -0.046em;
   text-shadow: 0 14px 48px rgba(0, 0, 0, 0.26);
   animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  text-wrap: balance;
 }
 
 @keyframes fadeInUp {
@@ -415,24 +443,25 @@ button {
 }
 
 .hero-title span:last-child {
-  margin-left: clamp(2rem, 6vw, 4rem);
+  margin-left: clamp(1.4rem, 4vw, 3rem);
   color: #f3d490;
 }
 
 .hero-tagline {
   margin: 1.3rem 0 0;
-  max-width: 34rem;
+  max-width: 40rem;
   color: var(--muted-strong);
-  font-size: clamp(1.2rem, 2vw, 1.56rem);
+  font-size: clamp(1.08rem, 1.7vw, 1.34rem);
   line-height: 1.4;
-  font-style: italic;
+  text-wrap: pretty;
 }
 
 .hero-bio,
 .hero-collaborator-note {
-  max-width: 40rem;
+  max-width: 46rem;
   font-size: 1rem;
   line-height: 1.76;
+  text-wrap: pretty;
 }
 
 .hero-bio {
@@ -450,7 +479,7 @@ button {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.9rem;
+  gap: var(--space-2);
   margin-top: 1.5rem;
 }
 
@@ -458,10 +487,11 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 14.5rem;
+  min-width: 13.2rem;
   padding: 0.96rem 1.35rem;
   border: 1px solid transparent;
   border-radius: 999px;
+  text-align: center;
 }
 
 .button:hover {
@@ -529,7 +559,7 @@ button {
 }
 
 .glow-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: 
     var(--shadow),
     0 0 40px rgba(221, 185, 100, 0.15);
@@ -668,10 +698,11 @@ button {
 
 .section-title {
   margin: 0.4rem 0 0;
-  font-size: clamp(3rem, 6.8vw, 5.4rem);
+  font-size: clamp(2.4rem, 5.8vw, 4.4rem);
   font-weight: 600;
-  line-height: 0.98;
+  line-height: 1.02;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .section-title-emphasis {
@@ -686,33 +717,42 @@ button {
 }
 
 .section-rule {
-  width: min(44rem, 100%);
+  width: min(46rem, 100%);
   height: 1px;
-  margin-top: 1.9rem;
+  margin-top: var(--space-4);
   background: linear-gradient(90deg, rgba(221, 185, 100, 0.58), transparent 82%);
 }
 
 .section-intro {
-  margin: 1.35rem 0 0;
-  max-width: 46rem;
+  margin: var(--space-3) 0 0;
+  max-width: 48rem;
   color: var(--muted);
   font-size: 1.04rem;
   line-height: 1.8;
   letter-spacing: 0.01em;
+  text-wrap: pretty;
 }
 
 .recognition-grid,
 .capability-grid {
   display: grid;
-  gap: 1.2rem;
-  margin-top: 2rem;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.recognition-item,
+.capability-card-wrap {
+  min-width: 0;
+  height: 100%;
 }
 
 .recognition-card {
   display: grid;
-  grid-template-columns: minmax(80px, 120px) 1fr;
+  grid-template-columns: minmax(72px, 110px) 1fr;
   gap: 1.4rem;
-  padding: 1.8rem;
+  padding: var(--card-padding);
+  height: 100%;
+  min-width: 0;
 }
 
 .recognition-card__number-wrap {
@@ -731,24 +771,28 @@ button {
 .recognition-card__body {
   position: relative;
   z-index: 1;
+  min-width: 0;
 }
 
 .recognition-card__title {
   margin: 0.45rem 0 0;
-  font-size: clamp(2rem, 4vw, 2.85rem);
+  font-size: clamp(1.65rem, 3.2vw, 2.4rem);
   line-height: 1.04;
+  text-wrap: balance;
 }
 
 .recognition-card__framing {
   margin: 0.9rem 0 0;
   color: var(--gold);
-  font-size: 1.1rem;
+  font-size: 1.02rem;
   font-style: italic;
+  text-wrap: pretty;
 }
 
 .recognition-card__detail {
   margin: 0.95rem 0 0;
   color: var(--muted);
+  text-wrap: pretty;
 }
 
 .recognition-card__evidence {
@@ -783,9 +827,9 @@ button {
 
 .investigations-layout {
   display: grid;
-  grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1.22fr);
-  gap: 1.35rem;
-  margin-top: 2rem;
+  grid-template-columns: minmax(15.5rem, 0.78fr) minmax(0, 1.22fr);
+  gap: var(--space-3);
+  margin-top: var(--space-5);
   align-items: start;
 }
 
@@ -800,17 +844,18 @@ button {
   gap: 1rem;
   align-items: start;
   width: 100%;
-  padding: 1rem 1.05rem;
+  padding: 0.95rem 1rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.02);
   cursor: pointer;
   text-align: left;
+  min-width: 0;
 }
 
 .chapter-tab:hover {
   border-color: var(--line-strong);
-  transform: translateX(4px);
+  transform: translateY(-1px);
   background: rgba(255, 255, 255, 0.04);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -832,6 +877,7 @@ button {
 .chapter-tab__meta {
   display: grid;
   gap: 0.35rem;
+  min-width: 0;
 }
 
 .chapter-tab__org {
@@ -845,10 +891,12 @@ button {
   color: var(--text);
   font-size: 1rem;
   line-height: 1.4;
+  text-wrap: pretty;
 }
 
 .chapter-panel {
-  padding: 1.5rem;
+  padding: var(--card-padding);
+  min-width: 0;
 }
 
 .tone-panel-gold {
@@ -889,10 +937,15 @@ button {
   gap: 1rem;
 }
 
+.chapter-panel__header > * {
+  min-width: 0;
+}
+
 .chapter-panel__title {
   margin: 0.4rem 0 0;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.6rem, 3vw, 2.45rem);
   line-height: 1.04;
+  text-wrap: balance;
 }
 
 .chapter-panel__status {
@@ -908,6 +961,7 @@ button {
   font-size: 0.76rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
+  flex-shrink: 0;
 }
 
 .chapter-panel__status-dot {
@@ -938,20 +992,22 @@ button {
 .chapter-panel__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
 }
 
 .chapter-panel__block {
-  padding: 1rem 1.05rem;
+  padding: 0.95rem 1rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.03);
+  min-width: 0;
 }
 
 .chapter-panel__block p:last-child {
   margin: 0.5rem 0 0;
   color: var(--muted-strong);
+  text-wrap: pretty;
 }
 
 .chapter-panel__tools,
@@ -962,7 +1018,7 @@ button {
 }
 
 .chapter-panel__tools {
-  margin-top: 1.35rem;
+  margin-top: var(--space-3);
 }
 
 .chapter-panel__tool,
@@ -982,7 +1038,10 @@ button {
 }
 
 .capability-card {
-  padding: 1.35rem;
+  padding: var(--card-padding);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .capability-card__description {
@@ -990,19 +1049,21 @@ button {
   z-index: 1;
   margin: 0.8rem 0 0;
   color: var(--muted);
+  text-wrap: pretty;
 }
 
 .capability-card__list {
   position: relative;
   z-index: 1;
-  margin-top: 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
 .leadership-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 1.25rem;
-  margin-top: 2rem;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
 }
 
 .leadership-card {
@@ -1010,7 +1071,7 @@ button {
 }
 
 .leadership-card__hero {
-  padding: 2.4rem 2rem 1.7rem;
+  padding: 2rem 1.6rem 1.35rem;
   border-bottom: 1px solid var(--line);
   text-align: center;
 }
@@ -1018,20 +1079,20 @@ button {
 .leadership-card__headline {
   margin: 0;
   color: var(--gold);
-  font-size: clamp(4rem, 9vw, 7rem);
+  font-size: clamp(3rem, 7vw, 5.6rem);
   line-height: 0.92;
 }
 
 .leadership-card__headline-label {
   margin: 1rem auto 0;
-  max-width: 34rem;
+  max-width: 30rem;
   color: var(--muted);
   font-size: 1.02rem;
-  font-style: italic;
+  text-wrap: pretty;
 }
 
 .leadership-summary {
-  padding: 1.6rem 1.8rem 1.8rem;
+  padding: 1.35rem 1.5rem 1.5rem;
 }
 
 .leadership-summary__role {
@@ -1041,6 +1102,7 @@ button {
 .leadership-summary__body {
   margin: 0.8rem 0 0;
   color: var(--muted-strong);
+  text-wrap: pretty;
 }
 
 .leadership-summary__list {
@@ -1058,7 +1120,7 @@ button {
 }
 
 .leadership-outcome {
-  padding: 1.45rem 1.7rem;
+  padding: 1.25rem 1.35rem;
   border-bottom: 1px solid var(--line);
 }
 
@@ -1076,12 +1138,13 @@ button {
   max-width: 28rem;
   color: var(--muted);
   font-size: 0.95rem;
+  text-wrap: pretty;
 }
 
 .leadership-outcome__value {
   color: var(--gold);
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2.1rem, 4vw, 3rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
   line-height: 1;
 }
 
@@ -1092,7 +1155,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem 5vw 6rem;
+  padding: clamp(3rem, 6vh, 4.5rem) var(--gutter) clamp(3.4rem, 6vh, 5.4rem);
   border-top: 1px solid var(--line);
   text-align: center;
 }
@@ -1109,8 +1172,9 @@ button {
 
 .footer-contact__title {
   margin: 0.45rem 0 0;
-  font-size: clamp(3.8rem, 8vw, 6.8rem);
+  font-size: clamp(2.8rem, 6.8vw, 5rem);
   font-style: italic;
+  text-wrap: balance;
 }
 
 .footer-contact__tagline,
@@ -1122,19 +1186,22 @@ button {
   margin: 1.1rem 0 0;
   color: var(--muted-strong);
   font-size: 1.08rem;
+  text-wrap: pretty;
 }
 
 .footer-contact__note {
   margin: 0.95rem 0 0;
   color: var(--muted);
+  text-wrap: pretty;
 }
 
 .footer-contact__actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem 2rem;
-  margin-top: 2.4rem;
+  gap: 1rem 1.6rem;
+  margin-top: var(--space-5);
+  width: min(100%, 36rem);
 }
 
 .footer-link {
@@ -1144,8 +1211,10 @@ button {
   padding: 0.2rem 0;
   color: var(--gold);
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  font-size: clamp(1.4rem, 2.8vw, 1.95rem);
   font-style: italic;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .footer-link::after {
@@ -1268,7 +1337,7 @@ button {
   }
 
   .hero-title span:last-child {
-    margin-left: 8vw;
+    margin-left: 0;
   }
 
   .section-count {
@@ -1276,26 +1345,27 @@ button {
     transform: none;
     font-size: 6.5rem;
   }
+
+  .top-nav__section {
+    display: none;
+  }
 }
 
 @media (max-width: 820px) {
   :root {
     --nav-height: 82px;
-  }
-
-  .page-shell,
-  .footer-contact {
-    padding-left: 1.2rem;
-    padding-right: 1.2rem;
-  }
-
-  .top-nav {
-    padding: 1rem 1.2rem;
+    --gutter: 1rem;
+    --section-gap-top: 2.5rem;
+    --section-gap-bottom: 2.9rem;
   }
 
   .status-pill,
   .top-nav__section {
     display: none;
+  }
+
+  .top-nav__meta {
+    gap: 0.8rem;
   }
 
   .hero-section,
@@ -1304,7 +1374,7 @@ button {
   }
 
   .hero-title {
-    font-size: clamp(4rem, 19vw, 6.2rem);
+    font-size: clamp(2.85rem, 15vw, 4.3rem);
   }
 
   .hero-title span:last-child {
@@ -1342,6 +1412,10 @@ button {
 
   .chapter-panel__status {
     width: fit-content;
+  }
+
+  .section-title {
+    font-size: clamp(2.1rem, 11vw, 3.1rem);
   }
 }
 

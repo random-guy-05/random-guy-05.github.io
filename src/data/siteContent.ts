@@ -103,12 +103,14 @@ export const siteContent: SiteContent = {
   seoTitle: "Arnav Mana | Clinical AI Researcher in Cardiac Critical Care",
   name: "Arnav Mana",
   eyebrow: "Clinical AI Researcher | Computational Biology | Cardiac Critical Care",
-  tagline: "Building clinically grounded prediction systems and translational biology models for earlier intervention in high-risk cardiac care.",
-  bio: "My work sits at the intersection of computational biology, translational cardiology, and clinical AI. I build models that connect physiological and molecular signals to mechanism, earlier recognition, and better bedside decisions.",
+  tagline:
+    "Developing clinically grounded prediction systems and translational biology models to support earlier intervention in high-risk cardiac care.",
+  bio:
+    "My work sits at the intersection of computational biology, translational cardiology, and clinical AI. I design models that connect physiological and molecular signals to mechanism, early recognition, and better bedside decisions.",
   thesis:
     "The strongest questions in medicine do not split computation from biology. I work where model, mechanism, and clinical consequence have to hold together.",
   collaboratorNote:
-    "I look for mentors and teams tackling cardiac critical care, translational biology, and predictive modeling where rigor matters more than novelty.",
+    "I am actively seeking mentors and teams working in cardiac critical care, translational biology, and predictive modeling where rigor and clinical relevance are non-negotiable.",
   heroFacts: [
     {
       label: "Current focus",
@@ -312,15 +314,15 @@ export const siteContent: SiteContent = {
     headlineValue: 100000,
     headlinePrefix: "$",
     headlineSuffix: "+",
-      headlineLabel: "mobilized across sponsorships, prize support, and operating resources for Hack4Health",
-      summary:
-        "I helped turn Hack4Health from an idea into a partner-backed initiative connecting students, mentors, and operators around applied health AI.",
-      role: "Hack4Health · Co-Founder and Co-President",
-      initiatives: [
-        "Built an external partner network instead of depending on school momentum alone.",
-        "Created structures that made ambitious projects easier to start and finish.",
-        "Turned outreach, sponsorship, mentor recruitment, and event execution into repeatable operating work.",
-      ],
+    headlineLabel: "mobilized across sponsorships, prize support, and operating resources for Hack4Health",
+    summary:
+      "I helped turn Hack4Health from an idea into a partner-backed initiative connecting students, mentors, and operators around applied health AI.",
+    role: "Hack4Health · Co-Founder and Co-President",
+    initiatives: [
+      "Built an external partner network instead of depending on school momentum alone.",
+      "Created structures that made ambitious projects easier to start and finish.",
+      "Turned outreach, sponsorship, mentor recruitment, and event execution into repeatable operating work.",
+    ],
     outcomes: [
       {
         label: "Participants engaged across AI4Alzheimers",
@@ -350,11 +352,11 @@ export const siteContent: SiteContent = {
   contact: {
     email: "arnavmana.me@gmail.com",
     phoneHref: "",
-      footerEyebrow: "Open to rigorous research collaborations",
-      footerTagline:
-        "If you lead work in cardiac critical care, clinical AI, or translational biology, I would welcome the chance to contribute with rigor, speed, and judgment.",
-      footerNote:
-        "Email is the best starting point. I work best in environments that value clear feedback, high standards, and clinically meaningful questions.",
+    footerEyebrow: "Open to high-rigor research collaboration",
+    footerTagline:
+      "If your team is advancing cardiac critical care, clinical AI, or translational biology, I would welcome the opportunity to contribute.",
+    footerNote:
+      "Email is the best way to connect. I work best in environments with clear standards, direct feedback, and clinically meaningful objectives.",
     actions: [
       {
         label: "Copy email",

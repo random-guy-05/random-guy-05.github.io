@@ -99,9 +99,8 @@ export function LeadershipSection({
         title="Leadership with results"
       />
       <Reveal as="p" className="section-intro" delay="short">
-        Leadership matters when it produces results: mentors recruited,
-        partnerships secured, students supported, and work that becomes easier
-        for other people to do well.
+        Leadership is meaningful when it produces measurable outcomes, including
+        mentor engagement, partner commitments, and stronger execution systems.
       </Reveal>
       <Reveal className="leadership-layout" delay="medium">
         <GlowCard className="leadership-card leadership-card--summary">

@@ -36,10 +36,10 @@ export function HeroSection({ content }: HeroSectionProps) {
           </Reveal>
           <Reveal className="hero-actions" delay="long">
             <a className="button button--primary" href="#investigations">
-              Explore selected investigations
+              Review research portfolio
             </a>
             <a className="button button--secondary" href="#contact">
-              Discuss collaboration
+              Start a conversation
             </a>
           </Reveal>
         </div>
