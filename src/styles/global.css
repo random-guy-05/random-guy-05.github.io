@@ -827,10 +827,11 @@ button {
 
 .investigations-layout {
   display: grid;
-  grid-template-columns: minmax(15.5rem, 0.78fr) minmax(0, 1.22fr);
-  gap: var(--space-3);
+  grid-template-columns: minmax(16rem, 0.84fr) minmax(0, 1.16fr);
+  gap: var(--space-4);
   margin-top: var(--space-5);
   align-items: start;
+  width: 100%;
 }
 
 .chapter-rail {
@@ -897,6 +898,8 @@ button {
 .chapter-panel {
   padding: var(--card-padding);
   min-width: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .tone-panel-gold {
@@ -929,7 +932,14 @@ button {
     var(--surface);
 }
 
-.chapter-panel__header,
+.chapter-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .leadership-outcome {
   display: flex;
   align-items: flex-start;
@@ -961,7 +971,8 @@ button {
   font-size: 0.76rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  flex-shrink: 0;
+  max-width: 100%;
+  white-space: normal;
 }
 
 .chapter-panel__status-dot {
@@ -1002,12 +1013,25 @@ button {
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.03);
   min-width: 0;
+  height: 100%;
 }
 
 .chapter-panel__block p:last-child {
   margin: 0.5rem 0 0;
   color: var(--muted-strong);
   text-wrap: pretty;
+}
+
+.chapter-panel__eyebrow,
+.chapter-panel__title {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.chapter-panel.glow-card:hover {
+  transform: none;
+  box-shadow: var(--shadow-soft);
+  border-color: var(--line);
 }
 
 .chapter-panel__tools,
