@@ -29,7 +29,7 @@ export function ECGPreview({
     if (!svg) return undefined;
 
     const path = svg.querySelector("path");
-    if (!path) return undefined;
+    if (!(path instanceof SVGPathElement)) return undefined;
 
     const start = performance.now();
 
