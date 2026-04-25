@@ -173,12 +173,70 @@ export default function App() {
         <main>
           <section id="hero" className="hero-section page-section" aria-labelledby="hero-title">
             <div className="hero-scene" aria-hidden="true">
-              <span className="trace trace-one" />
-              <span className="trace trace-two" />
-              <span className="trace trace-three" />
-              <span className="scene-label scene-label-one">model</span>
-              <span className="scene-label scene-label-two">mechanism</span>
-              <span className="scene-label scene-label-three">care</span>
+              <div className="heart-stage">
+                <svg className="heart-visual" viewBox="0 0 640 520" role="img" aria-label="Beating heart with ECG signal">
+                  <defs>
+                    <linearGradient id="heartFill" x1="0" x2="1" y1="0" y2="1">
+                      <stop offset="0%" stopColor="var(--heart-light)" />
+                      <stop offset="55%" stopColor="var(--heart)" />
+                      <stop offset="100%" stopColor="var(--heart-dark)" />
+                    </linearGradient>
+                    <filter id="heartGlow" x="-30%" y="-30%" width="160%" height="160%">
+                      <feGaussianBlur stdDeviation="10" result="blur" />
+                      <feColorMatrix
+                        in="blur"
+                        type="matrix"
+                        values="1 0 0 0 0.62 0 0.45 0 0 0.08 0 0 0.2 0 0.08 0 0 0 0.45 0"
+                      />
+                      <feMerge>
+                        <feMergeNode />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  <g className="heart-beat">
+                    <path
+                      className="heart-shadow"
+                      d="M319 437C204 363 129 286 129 194c0-63 42-112 101-112 37 0 69 20 89 55 20-35 52-55 89-55 59 0 101 49 101 112 0 92-75 169-190 243Z"
+                    />
+                    <path
+                      className="heart-body"
+                      d="M319 423C211 354 142 281 142 196c0-55 36-96 87-96 41 0 73 27 90 71 17-44 49-71 90-71 51 0 87 41 87 96 0 85-69 158-177 227Z"
+                    />
+                    <path
+                      className="heart-vein heart-vein-one"
+                      d="M317 165c-4 64-18 112-59 166"
+                    />
+                    <path
+                      className="heart-vein heart-vein-two"
+                      d="M320 171c16 44 45 81 88 114"
+                    />
+                    <path
+                      className="heart-vein heart-vein-three"
+                      d="M287 223c-34 0-63-13-88-39"
+                    />
+                    <path
+                      className="heart-vessel vessel-one"
+                      d="M289 127c-18-45-45-73-86-86"
+                    />
+                    <path
+                      className="heart-vessel vessel-two"
+                      d="M352 127c20-48 55-77 104-88"
+                    />
+                    <path
+                      className="heart-vessel vessel-three"
+                      d="M320 125c4-50 21-89 51-116"
+                    />
+                  </g>
+                  <path className="ecg-shadow" d="M28 283h151l23-33 28 73 45-163 47 171 31-48h259" />
+                  <path className="ecg-line" d="M28 283h151l23-33 28 73 45-163 47 171 31-48h259" />
+                  <circle className="ecg-dot" cx="274" cy="161" r="6" />
+                </svg>
+                <div className="heart-caption">
+                  <span>live physiologic signal</span>
+                  <strong>ECG / model / mechanism</strong>
+                </div>
+              </div>
             </div>
 
             <div className="hero-inner">
@@ -186,9 +244,14 @@ export default function App() {
               <h1 className="hero-title" id="hero-title">
                 {siteContent.name}
               </h1>
-              <p className="hero-tagline">{siteContent.tagline}</p>
-              <p className="hero-bio">{siteContent.bio}</p>
-              <p className="hero-thesis">{siteContent.thesis}</p>
+              <p className="hero-tagline">
+                I build prediction systems where physiology, mechanism, and bedside action have to
+                agree.
+              </p>
+              <div className="hero-statement">
+                <p>{siteContent.bio}</p>
+                <p>{siteContent.thesis}</p>
+              </div>
 
               <div className="hero-actions">
                 <a className="button button--primary" href="#work">
@@ -303,6 +366,16 @@ export default function App() {
                   <h3>{activeProject.title}</h3>
                   <p className="project-question">{activeProject.question}</p>
 
+                  <div className="project-signal" aria-hidden="true">
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+
                   <dl className="project-map">
                     <div>
                       <dt>Approach</dt>
@@ -347,6 +420,7 @@ export default function App() {
                     aria-controls={`project-panel-${project.id}`}
                     onClick={() => setActiveProjectId(project.id)}
                   >
+                    <i aria-hidden="true" />
                     <span>{project.numeral}</span>
                     <strong>{project.title}</strong>
                     <p>{project.org}</p>
